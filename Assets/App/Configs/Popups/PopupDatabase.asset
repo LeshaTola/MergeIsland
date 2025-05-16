@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7b640a9654fa04fa1f841b539b700d, type: 3}
+  m_Name: PopupDatabase
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  popups:
+  - {fileID: 5516821293974244937, guid: d9b82c5de5a6c5642a58240e82d06e20, type: 3}
+  - {fileID: 6721861566395836797, guid: c52b670656c20e341bded4f7f059aff0, type: 3}
+  - {fileID: 5630909750398748318, guid: 0b63c7ded95d6a9469a2209ed32a81bd, type: 3}
