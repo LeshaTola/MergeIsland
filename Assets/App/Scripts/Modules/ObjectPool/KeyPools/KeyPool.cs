@@ -15,7 +15,7 @@ namespace App.Scripts.Modules.ObjectPool.KeyPools
         {
             foreach (var key in pooledObjects.Keys)
             {
-                var pool = new MonoBehObjectPool<T>(
+                var pool = new MonoObjectPool<T>(
                     pooledObjects[key].Template,
                     pooledObjects[key].PreloadCount,
                     container

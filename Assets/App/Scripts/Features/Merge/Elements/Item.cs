@@ -1,18 +1,34 @@
-﻿using UnityEngine;
+﻿using App.Scripts.Features.Merge.Configs;
+using App.Scripts.Modules.ObjectPool.PooledObjects;
+using App.Scripts.Modules.ObjectPool.Pools;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace App.Scripts.Features.Merge.Grid
+namespace App.Scripts.Features.Merge.Elements
 {
-    public class MergeItem : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
+    public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler, IPoolableObject<Item>
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
-
-        [SerializeField] private Transform _overlayParent;
+        
+        private Transform _overlayParent;
+        private IPool<Item> _pool;
 
         public Slot CurrentSlot { get; private set; }
+        public string Id {get; private set;}
+        
+        public void Initialize(Transform overlayParent)
+        {
+            _overlayParent = overlayParent;
+        }
 
+        public void Setup(ItemConfig config)
+        {
+            Id = config.Id;
+            _image.sprite = config.Sprite;
+        }
+        
         public void OnBeginDrag(PointerEventData eventData)
         {
             transform.SetParent(_overlayParent, false);
@@ -50,6 +66,21 @@ namespace App.Scripts.Features.Merge.Grid
         {
             transform.SetParent(CurrentSlot.transform, false);
             _rectTransform.anchoredPosition = Vector2.zero;
+        }
+
+        public void OnGet(IPool<Item> pool)
+        {
+            _pool = pool;
+        }
+
+        public void Release()
+        {
+            _pool.Release(this);
+        }
+
+        public void OnRelease()
+        {
+            CurrentSlot?.Clear();
         }
     }
 }

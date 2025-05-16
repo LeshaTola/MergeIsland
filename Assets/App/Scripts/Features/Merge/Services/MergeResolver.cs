@@ -1,13 +1,32 @@
 ﻿using App.Scripts.Features.Merge.Configs;
+using App.Scripts.Features.Merge.Elements;
 
 namespace App.Scripts.Features.Merge.Services
 {
     public class MergeResolver
     {
-        private CatalogsDatabase _catalogsDatabase;
+        private readonly CatalogsDatabase _catalogsDatabase;
 
-        public bool TryMerge(string id, out MergeItemConfig config)
+        public MergeResolver(CatalogsDatabase catalogsDatabase)
         {
+            _catalogsDatabase = catalogsDatabase;
+        }
+
+        public bool TryMerge(Item firstItem, Item secondItem, out ItemConfig config)
+        {
+            if (!firstItem.Id.Equals(secondItem.Id))
+            {
+                config = null;
+                return false;
+            }
+
+            config = GetNextLevel(firstItem);
+            return config != null;
+        }
+
+        private ItemConfig GetNextLevel(Item firstItem)
+        {
+            var id = firstItem.Id;
             foreach (var catalogConfig in _catalogsDatabase.Database)
             {
                 if (!catalogConfig.Value.IsInCatalog(id))
@@ -15,13 +34,9 @@ namespace App.Scripts.Features.Merge.Services
                     continue;
                 }
 
-                var nextLevelConfig = catalogConfig.Value.GetNextLevelConfig(id);
-                config = nextLevelConfig;
-                return config != null;
+                return catalogConfig.Value.GetNextLevelConfig(id);
             }
-
-            config = null;
-            return false;
+            return null;
         }
     }
 }

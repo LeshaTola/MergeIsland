@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _TestCatalog
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <Id>k__BackingField: _TestCatalog
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 060ba693bec32b84fad7ba596cfbafb5, type: 2}
+  - {fileID: 11400000, guid: b24d44730ab6dd94da3db76e03cada33, type: 2}
+  - {fileID: 11400000, guid: 057370848f670ad439ce3867048a4ff6, type: 2}
+  <EmittersCatalog>k__BackingField: []

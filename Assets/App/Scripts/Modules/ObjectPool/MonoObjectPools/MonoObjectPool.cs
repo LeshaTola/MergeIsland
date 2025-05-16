@@ -4,15 +4,15 @@ using UnityEngine;
 
 namespace App.Scripts.Modules.ObjectPool.MonoObjectPools
 {
-    public class MonoBehObjectPool<T> : IPool<T> where T : MonoBehaviour
+    public class MonoObjectPool<T> : IPool<T> where T : MonoBehaviour
     {
-        private ObjectPool<T> core;
+        private readonly ObjectPool<T> _core;
 
-        public IReadOnlyCollection<T> Active => core.Active;
+        public IReadOnlyCollection<T> Active => _core.Active;
 
-        public MonoBehObjectPool(T objectTemplate, int startCount, Transform parent = null)
+        public MonoObjectPool(T objectTemplate, int startCount, Transform parent = null)
         {
-            core = new ObjectPool<T>(
+            _core = new ObjectPool<T>(
                 () =>
                 {
                     var pooledObject = GameObject.Instantiate(objectTemplate, parent);
@@ -34,13 +34,13 @@ namespace App.Scripts.Modules.ObjectPool.MonoObjectPools
 
         public T Get()
         {
-            var pooledObject = core.Get();
+            var pooledObject = _core.Get();
             return pooledObject;
         }
 
         public void Release(T pooledObject)
         {
-            core.Release(pooledObject);
+            _core.Release(pooledObject);
         }
     }
 }

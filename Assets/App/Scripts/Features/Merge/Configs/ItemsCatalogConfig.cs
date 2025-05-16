@@ -4,29 +4,14 @@ using UnityEngine;
 
 namespace App.Scripts.Features.Merge.Configs
 {
-    public class MergeItemConfig : ScriptableObject
+    [CreateAssetMenu(fileName = "MergeItemsCatalogConfig", menuName = "Configs/Merge/Catalog")]
+    public class ItemsCatalogConfig : SerializedScriptableObject
     {
         [field: SerializeField] [field: ReadOnly]
         public string Id { get; private set; }
 
-        [field: SerializeField] public string Name { get; private set; }
-        [field: SerializeField] public Sprite Sprite { get; private set; }
-        [field: SerializeField] public int Cost { get; private set; }
-        // OnClick Action        
-
-        private void OnValidate()
-        {
-            Id = name;
-        }
-    }
-
-    public class MergeItemsCatalogConfig : SerializedScriptableObject
-    {
-        [field: SerializeField] [field: ReadOnly]
-        public string Id { get; private set; }
-
-        [field: SerializeField] public List<MergeItemConfig> ItemsCatalog { get; private set; }
-        [field: SerializeField] public List<MergeItemConfig> EmittersCatalog { get; private set; }
+        [field: SerializeField] public List<ItemConfig> ItemsCatalog { get; private set; }
+        [field: SerializeField] public List<ItemConfig> EmittersCatalog { get; private set; }
 
         public bool IsInCatalog(string id)
         {
@@ -34,7 +19,7 @@ namespace App.Scripts.Features.Merge.Configs
                    || FindEmitterIndex(id) != -1;
         }
 
-        public MergeItemConfig GetNextLevelConfig(string id)
+        public ItemConfig GetNextLevelConfig(string id)
         {
             var mergeItemConfig = GetNextItemConfig(id);
             if (mergeItemConfig != null)
@@ -46,7 +31,7 @@ namespace App.Scripts.Features.Merge.Configs
             return mergeItemConfig;
         }
 
-        private MergeItemConfig GetNextEmitterConfig(string id)
+        private ItemConfig GetNextEmitterConfig(string id)
         {
             var index = FindItemIndex(id);
             if (index != -1)
@@ -58,7 +43,7 @@ namespace App.Scripts.Features.Merge.Configs
             return null;
         }
 
-        private MergeItemConfig GetNextItemConfig(string id)
+        private ItemConfig GetNextItemConfig(string id)
         {
             var index = FindItemIndex(id);
             if (index != -1)
@@ -85,10 +70,5 @@ namespace App.Scripts.Features.Merge.Configs
         {
             Id = name;
         }
-    }
-
-    public class CatalogsDatabase : SerializedScriptableObject
-    {
-        [field: SerializeField] public Dictionary<string, MergeItemsCatalogConfig> Database { get; private set; }
     }
 }
