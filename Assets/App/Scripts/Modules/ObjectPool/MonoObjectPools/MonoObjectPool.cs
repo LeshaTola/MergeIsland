@@ -15,7 +15,7 @@ namespace App.Scripts.Modules.ObjectPool.MonoObjectPools
             _core = new ObjectPool<T>(
                 () =>
                 {
-                    var pooledObject = GameObject.Instantiate(objectTemplate, parent);
+                    var pooledObject = Object.Instantiate(objectTemplate, parent);
                     pooledObject.gameObject.SetActive(false);
                     return pooledObject;
                 },

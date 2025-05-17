@@ -1,5 +1,6 @@
 ﻿using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Factory;
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -35,7 +36,7 @@ namespace App.Scripts.Scenes.Gameplay.Features
             
             var slot = _grid.GetUnusedSlot();
             slot.DropItem(item);
-            item.MoveToParent();
+            item.MoveToParent().Forget();
         }
     }
 }

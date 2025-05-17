@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Elements;
+using App.Scripts.Features.Merge.Elements.Items;
 using App.Scripts.Features.Merge.Factory;
 using App.Scripts.Features.Merge.Services;
+using App.Scripts.Features.Merge.Services.SelectionProviders;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
@@ -20,6 +22,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
         
         [Header("Grid")]
         [SerializeField] private List<Slot> _slots; 
+        [SerializeField] private Transform _overlayContainer;
         
         [Header("Pools")]
         [SerializeField] private Item _itemTemplate;
@@ -32,7 +35,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             BindItemsPool();
 
             Container.Bind<MergeResolver>().AsSingle().WithArguments(_catalogsDatabase);
-            Container.Bind<IItemFactory>().AsSingle().WithArguments(_itemsContainer);
+            Container.Bind<SelectionProvider>().AsSingle();
+            Container.Bind<IItemFactory>().AsSingle().WithArguments(_overlayContainer);
             Container.BindInterfacesAndSelfTo<Grid>().AsSingle().WithArguments(_slots);
         }
 
