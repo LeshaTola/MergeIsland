@@ -13,14 +13,6 @@ namespace App.Scripts.Scenes.Gameplay.StateMachines.States
             _updateService = updateService;
         }
 
-        public override async UniTask Enter()
-        {
-        }
-
-        public override async UniTask Exit()
-        {
-        }
-
         public override UniTask Update()
         {
             _updateService.Update();

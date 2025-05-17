@@ -11,6 +11,7 @@ using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.States.General;
 using App.Scripts.Modules.TasksSystem.Configs;
+using App.Scripts.Modules.TimeProvider;
 using Codice.Client.BaseCommands;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -46,6 +47,7 @@ namespace App.Scripts.Features.Bootstrap
             Container.Bind<ConnectionProvider>().FromInstance(_connectionProvider);
 
             Container.Bind<ICommandsProvider>().To<CommandsProvider>().AsSingle();
+            Container.Bind<ITimeProvider>().To<TimeProvider>().AsSingle();
         }
 
         private void BindLocalizationSystem()

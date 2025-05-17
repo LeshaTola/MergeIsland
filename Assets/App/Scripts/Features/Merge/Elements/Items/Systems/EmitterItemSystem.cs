@@ -1,4 +1,5 @@
-﻿using App.Scripts.Features.Merge.Configs;
+﻿using App.Scripts.Features.Energy.Providers;
+using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Factory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
@@ -11,13 +12,16 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
         private readonly ItemFactory _itemFactory;
         private readonly ItemConfigsFactory _itemConfigsFactory;
+        private readonly EnergyProvider _energyProvider;
         private readonly Grid _grid;
 
         public EmitterItemSystem(ItemFactory itemFactory, 
             ItemConfigsFactory itemConfigsFactory,
+            EnergyProvider energyProvider,
             Grid grid)
         {
             _itemConfigsFactory = itemConfigsFactory;
+            _energyProvider = energyProvider;
             _itemFactory = itemFactory;
             _grid = grid;
         }
@@ -35,6 +39,12 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
         private void SpawnItem()
         {
+            if (_energyProvider.CurrentEnergy <= 0)
+            {
+                return;
+            }
+            
+            _energyProvider.ChangeEnergy(-1);
             var item = GetReadyItem();
             DropItemInSlot(item);
         }
