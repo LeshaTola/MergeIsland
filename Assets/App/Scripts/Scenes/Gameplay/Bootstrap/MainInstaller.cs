@@ -36,8 +36,15 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             Container.Bind<MergeResolver>().AsSingle().WithArguments(_catalogsDatabase);
             Container.Bind<SelectionProvider>().AsSingle();
-            Container.Bind<IItemFactory>().AsSingle().WithArguments(_overlayContainer);
+            BindItemsFactories();
             Container.BindInterfacesAndSelfTo<Grid>().AsSingle().WithArguments(_slots);
+        }
+
+        private void BindItemsFactories()
+        {
+            Container.Bind<ItemSystemsFactory>().AsSingle();
+            Container.Bind<ItemConfigsFactory>().AsSingle();
+            Container.Bind<ItemFactory>().AsSingle().WithArguments(_overlayContainer);
         }
 
         private void BindItemsPool()

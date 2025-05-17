@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767042775aa147e097cae3913046a351, type: 3}
   m_Name: 9Sliced
   m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 0aac9d71bdb467a43bad6086bbc641ab, type: 2}
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes:
+    - Name: <System>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.EmitterItemSystem,
+        Features
+    - Name: _itemsCatalogConfig
+      Entry: 10
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
   <Id>k__BackingField: 9Sliced
   <Name>k__BackingField: 
   <Sprite>k__BackingField: {fileID: -5177388603050735206, guid: 71ebafeef3c03457483266a33ab2b270, type: 3}

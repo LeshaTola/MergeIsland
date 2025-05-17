@@ -17,7 +17,6 @@ namespace App.Scripts.Features.Merge.Elements.Items
         [SerializeField] private ItemAnimator _animator;
         
         private Transform _overlayParent;
-        private Action _clickAction;
         private SelectionProvider _selectionProvider;
         private IPool<Item> _pool;
 
@@ -35,9 +34,11 @@ namespace App.Scripts.Features.Merge.Elements.Items
         public void Setup(ItemConfig config)
         {
             Config = config;
+            InitializeSystem();
+            
             _image.sprite = config.Sprite;
         }
-        
+
         public void OnBeginDrag(PointerEventData eventData)
         {
             _selectionProvider.ClearSelection();
@@ -74,7 +75,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
                 return;
             }
             
-            _clickAction?.Invoke();
+            Config.System?.Execute();
         }
 
         public void ChangeSlot(Slot newSlot)
@@ -112,6 +113,14 @@ namespace App.Scripts.Features.Merge.Elements.Items
         private void PlaceOnOverlay()
         {
             transform.SetParent(_overlayParent);
+        }
+
+        private void InitializeSystem()
+        {
+            if (Config.System != null)
+            {
+                Config.System.Item = this;
+            }
         }
     }
 }

@@ -1,37 +1,36 @@
 ﻿using App.Scripts.Features.Merge.Configs;
-using App.Scripts.Features.Merge.Elements.Items;
 using App.Scripts.Features.Merge.Factory;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
-using UnityEngine.UI;
-using Zenject;
-using Grid = App.Scripts.Features.Merge.Elements.Grid;
 
-namespace App.Scripts.Scenes.Gameplay.Features
+namespace App.Scripts.Features.Merge.Elements.Items.Systems
 {
-    public class SpawnItemButton:MonoBehaviour
+    public class EmitterItemSystem : ItemSystem
     {
-        [SerializeField] private Button _button;
-        [FormerlySerializedAs("itemsCatalogConfig")] [SerializeField] 
-        private ItemsCatalogConfig _itemsCatalogConfig;
-        
-        private ItemFactory _itemFactory;
-        private ItemConfigsFactory _itemConfigsFactory;
-        private Grid _grid;
-        
+        [SerializeField] private ItemsCatalogConfig _itemsCatalogConfig;
 
-        [Inject]
-        [SerializeField] private void Construct(Grid grid, ItemFactory itemFactory,ItemConfigsFactory itemConfigsFactory)
+        private readonly ItemFactory _itemFactory;
+        private readonly ItemConfigsFactory _itemConfigsFactory;
+        private readonly Grid _grid;
+
+        public EmitterItemSystem(ItemFactory itemFactory, 
+            ItemConfigsFactory itemConfigsFactory,
+            Grid grid)
         {
             _itemConfigsFactory = itemConfigsFactory;
             _itemFactory = itemFactory;
             _grid = grid;
         }
 
-        private void Awake()
+        public override void Execute()
         {
-            _button.onClick.AddListener(SpawnItem);
+            SpawnItem();
+        }
+
+        public override void Import(ItemSystem original)
+        {
+            var system = (EmitterItemSystem) original;
+            _itemsCatalogConfig = system._itemsCatalogConfig;
         }
 
         private void SpawnItem()
@@ -43,8 +42,11 @@ namespace App.Scripts.Scenes.Gameplay.Features
         private Item GetReadyItem()
         {
             var item = _itemFactory.GetItem();
+            
             var newConfig = _itemConfigsFactory.GetConfig(_itemsCatalogConfig.ItemsCatalog[0]);
             item.Setup(newConfig);
+            
+            item.transform.position = Item.transform.position;
             return item;
         }
 
