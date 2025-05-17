@@ -2,13 +2,14 @@
 using App.Scripts.Features.Energy.Configs;
 using App.Scripts.Features.Energy.Saves;
 using App.Scripts.Modules.Saves;
+using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using App.Scripts.Modules.TimeProvider;
 using Cysharp.Threading.Tasks;
 
 namespace App.Scripts.Features.Energy.Providers
 {
-    public class EnergyProvider : IEnergyProvider, IUpdatable
+    public class EnergyProvider : IEnergyProvider, IInitializable, IUpdatable
     {
         public event Action OnEnergyChanged;
         public event Action OnEnergyTimerChanged;
@@ -34,6 +35,11 @@ namespace App.Scripts.Features.Energy.Providers
             _config = config;
             _timeProvider = timeProvider;
             _energyDataProvider = energyDataProvider;
+        }
+
+        public void Initialize()
+        {
+            LoadData();
         }
 
         public void Update()
@@ -131,7 +137,7 @@ namespace App.Scripts.Features.Energy.Providers
             if (CurrentEnergy < 0)
                 CurrentEnergy = 0;
         }
-        
+
         private void ProcessTimer()
         {
             if (IsAtMaxEnergy())
@@ -175,6 +181,5 @@ namespace App.Scripts.Features.Energy.Providers
                 ChangeEnergy(_config.RecoveryValue);
             }
         }
-
     }
 }
