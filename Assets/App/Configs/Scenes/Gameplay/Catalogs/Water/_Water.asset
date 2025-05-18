@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _Water
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <Id>k__BackingField: _Water
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 259556af711cca740a7673bcfe8bfd37, type: 2}
+  - {fileID: 11400000, guid: 5e20cec1d0dfba94eb5efe28da29ed65, type: 2}
+  - {fileID: 11400000, guid: dd83e12cfea029743a40a77448e30bff, type: 2}
+  - {fileID: 11400000, guid: 0c74f9e0c336201499cc6de5a89125d5, type: 2}
+  - {fileID: 11400000, guid: 7c75a1b32f2b74f4bb2c7177941057f8, type: 2}
+  - {fileID: 11400000, guid: bb2979fa9d68f3949ab58812e65f2fed, type: 2}
+  <EmittersCatalog>k__BackingField: []

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 767042775aa147e097cae3913046a351, type: 3}
-  m_Name: Knife
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _Fire
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -20,11 +20,11 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: <System>k__BackingField
-      Entry: 6
-      Data: 
-  <Id>k__BackingField: Knife
-  <Name>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 1644752771, guid: f6cf53cbcad6a7740baccf186dad51f2, type: 3}
-  <Cost>k__BackingField: 0
+    SerializationNodes: []
+  <Id>k__BackingField: _Fire
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: da6e8bacc4f973e4481f1e3c5701427f, type: 2}
+  - {fileID: 11400000, guid: 3032d47e6d4974347919b9b83c546764, type: 2}
+  - {fileID: 11400000, guid: 94b675a8420b40845a1d41096a6228b7, type: 2}
+  - {fileID: 11400000, guid: 071003761df53514d97d59dd41678020, type: 2}
+  <EmittersCatalog>k__BackingField: []

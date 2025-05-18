@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _Food
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <Id>k__BackingField: _Food
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 8b31d197f9f83d845ac73035e96e1445, type: 2}
+  - {fileID: 11400000, guid: a4f05cca2f5363b4e92143b4148082ed, type: 2}
+  - {fileID: 11400000, guid: 46e21f788541f4341bbcef244876ace1, type: 2}
+  - {fileID: 11400000, guid: 91b216d9be4c6d94ca7ab1a388ce0f59, type: 2}
+  - {fileID: 11400000, guid: 47bc1d76025ff3c4182b6f4eeb9e9d58, type: 2}
+  <EmittersCatalog>k__BackingField: []

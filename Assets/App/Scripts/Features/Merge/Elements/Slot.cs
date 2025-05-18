@@ -64,6 +64,7 @@ namespace App.Scripts.Features.Merge.Elements
             else
             {
                 Item.Setup(mergeResult);
+                Item.Animator.MergeAnimation().Forget();
                 item.Release();
             }
         }

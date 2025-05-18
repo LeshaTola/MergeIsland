@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 767042775aa147e097cae3913046a351, type: 3}
-  m_Name: Knife
+  m_Name: Bowl
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -24,7 +24,7 @@ MonoBehaviour:
     - Name: <System>k__BackingField
       Entry: 6
       Data: 
-  <Id>k__BackingField: Knife
+  <Id>k__BackingField: Bowl
   <Name>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 1644752771, guid: f6cf53cbcad6a7740baccf186dad51f2, type: 3}
+  <Sprite>k__BackingField: {fileID: -862073316, guid: d7c1bcd337477b84c9f42f94db4570a0, type: 3}
   <Cost>k__BackingField: 0

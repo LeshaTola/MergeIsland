@@ -14,13 +14,13 @@ namespace App.Scripts.Features.Merge.Elements.Items
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
-        [SerializeField] private ItemAnimator _animator;
-        
+        [field: SerializeField] public ItemAnimator Animator { get; private set; }
+
         private Transform _overlayParent;
         private SelectionProvider _selectionProvider;
         private IPool<Item> _pool;
 
-        private bool isDragging;
+        private bool _isDragging;
         
         public Slot CurrentSlot { get; private set; }
         public ItemConfig Config { get; private set; }
@@ -44,7 +44,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             _selectionProvider.ClearSelection();
             PlaceOnOverlay();
             _image.raycastTarget = false;
-            isDragging = true;
+            _isDragging = true;
         }
 
         public void OnEndDrag(PointerEventData eventData)
@@ -52,7 +52,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             _selectionProvider.Select(CurrentSlot);
             MoveToParent().Forget();
             _image.raycastTarget = true;
-            isDragging = false;
+            _isDragging = false;
         }
 
         public void OnDrag(PointerEventData eventData)
@@ -68,7 +68,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            _animator.BounceAnimation().Forget();
+            Animator.BounceAnimation().Forget();
             if (!CurrentSlot.IsSelected)
             {
                 _selectionProvider.Select(CurrentSlot);
@@ -87,8 +87,8 @@ namespace App.Scripts.Features.Merge.Elements.Items
         public async UniTask MoveToParent()
         {
             PlaceOnOverlay();
-            await _animator.MoveTo(CurrentSlot.transform.position);
-            if (isDragging)
+            await Animator.MoveTo(CurrentSlot.transform.position);
+            if (_isDragging)
             {
                 return;
             }

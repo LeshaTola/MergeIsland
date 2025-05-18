@@ -1,6 +1,7 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace App.Scripts.Features.Merge.Elements.Items
 {
@@ -8,6 +9,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
     {
         [SerializeField] private float _moveAnimationDuration = 0.5f;
         [SerializeField] private float _bounceAnimationDuration = 0.4f;
+        [SerializeField] private float _mergeAnimationDuration = 0.3f;
 
         private Tween _currentTween;
         
@@ -30,6 +32,16 @@ namespace App.Scripts.Features.Merge.Elements.Items
             _currentTween = DOTween.Sequence()
                 .Append(transform.DOScale(0.75f, half).SetEase(Ease.OutQuad))
                 .Append(transform.DOScale(1f, half).SetEase(Ease.OutBack));
+
+            await _currentTween.ToUniTask();
+        }
+
+        public async UniTask MergeAnimation()
+        {
+            _currentTween?.Complete();
+
+            transform.localScale = Vector3.zero;
+            _currentTween = transform.DOScale(1f, _mergeAnimationDuration).SetEase(Ease.OutBack);
 
             await _currentTween.ToUniTask();
         }

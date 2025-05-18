@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using App.Scripts.Features.Merge.Services;
+using UnityEngine;
 using Zenject;
 
 namespace App.Scripts.Features.Merge.Elements
@@ -27,6 +28,11 @@ namespace App.Scripts.Features.Merge.Elements
         public Slot GetUnusedSlot()
         {
             return _slots.FirstOrDefault(x => x.Item == null);
+        }
+        
+        public Slot GetSlot(Vector2Int position)
+        {
+            return _slots[position.y * 8 + position.x];
         }
     }
 }

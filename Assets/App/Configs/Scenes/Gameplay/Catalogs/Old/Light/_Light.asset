@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 767042775aa147e097cae3913046a351, type: 3}
-  m_Name: Knife
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _Light
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -20,11 +20,10 @@ MonoBehaviour:
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
-    SerializationNodes:
-    - Name: <System>k__BackingField
-      Entry: 6
-      Data: 
-  <Id>k__BackingField: Knife
-  <Name>k__BackingField: 
-  <Sprite>k__BackingField: {fileID: 1644752771, guid: f6cf53cbcad6a7740baccf186dad51f2, type: 3}
-  <Cost>k__BackingField: 0
+    SerializationNodes: []
+  <Id>k__BackingField: _Light
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 174ffe9bf9a33bc4ebaec0d4de7c8486, type: 2}
+  - {fileID: 11400000, guid: 863a7fb8499f7f5498773e17f624b387, type: 2}
+  - {fileID: 11400000, guid: 631b67b2696998f489ebfdecbdc840ff, type: 2}
+  <EmittersCatalog>k__BackingField: []

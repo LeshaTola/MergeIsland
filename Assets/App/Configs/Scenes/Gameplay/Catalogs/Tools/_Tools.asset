@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03dc91fcaee3408e811d32f1c408363a, type: 3}
+  m_Name: _Tools
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <Id>k__BackingField: _Tools
+  <ItemsCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 701b704ff8242b046b78b3535d08141a, type: 2}
+  - {fileID: 11400000, guid: 0938347bc3956af4889553fee2a6da06, type: 2}
+  - {fileID: 11400000, guid: 31367c737accce94a858cec614095c34, type: 2}
+  - {fileID: 11400000, guid: 376664927d36d494e84974e2c5db7f75, type: 2}
+  - {fileID: 11400000, guid: b067093fbf7f87c488a7ee0a445a4c78, type: 2}
+  - {fileID: 11400000, guid: a58e029a149319c4fa88ee50183985fa, type: 2}
+  <EmittersCatalog>k__BackingField: []

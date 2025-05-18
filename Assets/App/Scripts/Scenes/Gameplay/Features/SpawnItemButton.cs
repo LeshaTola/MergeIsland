@@ -10,7 +10,7 @@ using Grid = App.Scripts.Features.Merge.Elements.Grid;
 
 namespace App.Scripts.Scenes.Gameplay.Features
 {
-    public class SpawnItemButton:MonoBehaviour
+    public class SpawnItemButton : MonoBehaviour
     {
         [SerializeField] private Button _button;
         [FormerlySerializedAs("itemsCatalogConfig")] [SerializeField] 
@@ -22,14 +22,14 @@ namespace App.Scripts.Scenes.Gameplay.Features
         
 
         [Inject]
-        [SerializeField] private void Construct(Grid grid, ItemFactory itemFactory,ItemConfigsFactory itemConfigsFactory)
+        private void Construct(Grid grid, ItemFactory itemFactory,ItemConfigsFactory itemConfigsFactory)
         {
             _itemConfigsFactory = itemConfigsFactory;
             _itemFactory = itemFactory;
             _grid = grid;
         }
 
-        private void Awake()
+        private void Start()
         {
             _button.onClick.AddListener(SpawnItem);
         }
