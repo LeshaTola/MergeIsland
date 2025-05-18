@@ -5,6 +5,7 @@ using App.Scripts.Features.Energy.Saves;
 using App.Scripts.Features.Energy.Saves.Keys;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Elements;
+using App.Scripts.Features.Merge.Elements.Filler;
 using App.Scripts.Features.Merge.Elements.Items;
 using App.Scripts.Features.Merge.Factory;
 using App.Scripts.Features.Merge.Services;
@@ -30,6 +31,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         [Header("Grid")]
         [SerializeField] private List<Slot> _slots;
+        [SerializeField] private GridFillConfig _gridFillConfig;
 
         [SerializeField] private Transform _overlayContainer;
 
@@ -48,6 +50,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.Bind<SelectionProvider>().AsSingle();
             BindItemsFactories();
             Container.BindInterfacesAndSelfTo<Grid>().AsSingle().WithArguments(_slots);
+            Container.BindInterfacesAndSelfTo<GridFiller>().AsSingle().WithArguments(_gridFillConfig);
 
             BindEnergy();
         }

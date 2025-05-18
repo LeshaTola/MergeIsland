@@ -14,6 +14,8 @@ namespace App.Scripts.Features.Merge.Elements.Items
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
+        
+        [field: SerializeField] public ItemVisual Visual { get; private set; }
         [field: SerializeField] public ItemAnimator Animator { get; private set; }
 
         private Transform _overlayParent;
@@ -24,6 +26,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
         
         public Slot CurrentSlot { get; private set; }
         public ItemConfig Config { get; private set; }
+        public bool IsBlocked { get; set; }
         
         public void Initialize(Transform overlayParent, SelectionProvider selectionProvider)
         {
@@ -33,6 +36,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void Setup(ItemConfig config)
         {
+            CleanupSystem();
             Config = config;
             InitializeSystem();
             
@@ -41,22 +45,37 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnBeginDrag(PointerEventData eventData)
         {
+            if (IsBlocked)
+            {
+                return;
+            }
+            
             _selectionProvider.ClearSelection();
             PlaceOnOverlay();
-            _image.raycastTarget = false;
+            SetRaycastTarget(false);
             _isDragging = true;
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
+            if (IsBlocked)
+            {
+                return;
+            }
+            
             _selectionProvider.Select(CurrentSlot);
             MoveToParent().Forget();
-            _image.raycastTarget = true;
+            SetRaycastTarget(false);
             _isDragging = false;
         }
 
         public void OnDrag(PointerEventData eventData)
         {
+            if (IsBlocked)
+            {
+                return;
+            }
+         
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
                 _rectTransform,
                 eventData.position,
@@ -84,6 +103,12 @@ namespace App.Scripts.Features.Merge.Elements.Items
             CurrentSlot = newSlot;
         }
 
+        public void MoveToParentImmediate()
+        {
+            transform.SetParent(CurrentSlot.transform);
+            transform.localPosition = Vector3.zero;
+        }
+
         public async UniTask MoveToParent()
         {
             PlaceOnOverlay();
@@ -107,7 +132,13 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnRelease()
         {
+            Config?.System?.Stop();
             CurrentSlot?.Clear();
+        }
+
+        private void SetRaycastTarget(bool isActive)
+        {
+            _image.raycastTarget = isActive;
         }
 
         private void PlaceOnOverlay()
@@ -117,9 +148,20 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         private void InitializeSystem()
         {
-            if (Config.System != null)
+            if (Config.System == null)
             {
-                Config.System.Item = this;
+                return;
+            }
+            
+            Config.System.Item = this;
+            Config.System.Start();
+        }
+
+        private void CleanupSystem()
+        {
+            if (Config != null)
+            {
+                Config.System?.Stop();
             }
         }
     }

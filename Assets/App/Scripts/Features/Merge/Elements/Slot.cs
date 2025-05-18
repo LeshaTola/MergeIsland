@@ -30,7 +30,7 @@ namespace App.Scripts.Features.Merge.Elements
         public void OnDrop(PointerEventData eventData)
         {
             var item = eventData.pointerDrag.GetComponent<Item>();
-
+            
             if (Item != null)
             {
                 if (item == Item)
@@ -40,7 +40,12 @@ namespace App.Scripts.Features.Merge.Elements
                 TryMerge(item);
                 return;
             }
-
+            
+            if (item.IsBlocked)
+            {
+                return;
+            }
+            
             DropItem(item);
         }
 
@@ -59,6 +64,10 @@ namespace App.Scripts.Features.Merge.Elements
         {
             if (!_mergeResolver.TryMerge(Item, item, out var mergeResult))
             {
+                if (Item.IsBlocked)
+                {
+                    return;
+                }   
                 SwapItems(item);
             }
             else

@@ -32,7 +32,7 @@ namespace App.Scripts.Features.Merge.Elements
         
         public Slot GetSlot(Vector2Int position)
         {
-            return _slots[position.y * 8 + position.x];
+            return _slots[position.y * 9 + position.x];
         }
     }
 }

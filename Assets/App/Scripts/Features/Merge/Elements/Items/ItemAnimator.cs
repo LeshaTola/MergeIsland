@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace App.Scripts.Features.Merge.Elements.Items
 {
@@ -12,7 +11,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
         [SerializeField] private float _mergeAnimationDuration = 0.3f;
 
         private Tween _currentTween;
-        
+
         public async UniTask MoveTo(Vector3 targetPosition)
         {
             _currentTween?.Complete();

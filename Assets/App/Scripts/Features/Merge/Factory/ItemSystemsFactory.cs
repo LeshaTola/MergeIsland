@@ -22,5 +22,11 @@ namespace App.Scripts.Features.Merge.Factory
             system.Import(original);
             return system;
         }
+        
+        public ItemSystem GetSystem<T>() where T : ItemSystem
+        {
+            var system = (ItemSystem) _container.Instantiate(typeof(T));
+            return system;
+        }
     }
 }

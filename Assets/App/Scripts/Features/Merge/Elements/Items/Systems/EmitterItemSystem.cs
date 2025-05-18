@@ -26,6 +26,17 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
             _grid = grid;
         }
 
+        public override void Start()
+        {
+            Item.Visual.EmitterActiveSetActive(true);
+        }
+        
+        public override void Stop()
+        {
+            Item.Visual.EmitterActiveSetActive(false);
+            Item.Visual.EmitterReloadSetActive(false);
+        }
+        
         public override void Execute()
         {
             SpawnItem();

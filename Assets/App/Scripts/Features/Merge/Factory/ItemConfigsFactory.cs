@@ -1,4 +1,5 @@
 ﻿using App.Scripts.Features.Merge.Configs;
+using App.Scripts.Features.Merge.Elements.Items.Systems;
 using UnityEngine;
 
 namespace App.Scripts.Features.Merge.Factory
@@ -12,16 +13,24 @@ namespace App.Scripts.Features.Merge.Factory
             _itemSystemsFactory = itemSystemsFactory;
         }
 
-        public ItemConfig GetConfig(ItemConfig original)
+        public ItemConfig GetConfig(ItemConfig original, bool isInWeb = false)
         {
             if (original == null)
             {
                 return original;
             }
-            
+
             var newConfig = Object.Instantiate(original);
-            newConfig.Initialize(_itemSystemsFactory.GetSystem(original.System));
+            var system = GetSystem(original, isInWeb);
+            newConfig.Initialize(system);
             return newConfig;
+        }
+
+        private ItemSystem GetSystem(ItemConfig original, bool isInWeb)
+        {
+            return isInWeb
+                ? _itemSystemsFactory.GetSystem<WebItemSystem>()
+                : _itemSystemsFactory.GetSystem(original.System);
         }
     }
 }

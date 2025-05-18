@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78b9e18afc914376963beaf22a011e17, type: 3}
+  m_Name: GridFillConfig
+  m_EditorClassIdentifier: 
+  serializationData:
+    SerializedFormat: 2
+    SerializedBytes: 
+    ReferencedUnityObjects: []
+    SerializedBytesString: 
+    Prefab: {fileID: 0}
+    PrefabModificationsReferencedUnityObjects: []
+    PrefabModifications: []
+    SerializationNodes: []
+  <Filling>k__BackingField:
+  - Position: {x: 4, y: 2}
+    ItemConfig: {fileID: 11400000, guid: 7a8036549b7254e4a8f05eff21cb4076, type: 2}
+    IsInWeb: 0
+  - Position: {x: 0, y: 0}
+    ItemConfig: {fileID: 11400000, guid: 701b704ff8242b046b78b3535d08141a, type: 2}
+    IsInWeb: 1
