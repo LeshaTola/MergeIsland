@@ -4,12 +4,14 @@ using App.Scripts.Features.Energy.Providers;
 using App.Scripts.Features.Energy.Saves;
 using App.Scripts.Features.Energy.Saves.Keys;
 using App.Scripts.Features.Merge.Configs;
-using App.Scripts.Features.Merge.Elements;
 using App.Scripts.Features.Merge.Elements.Filler;
 using App.Scripts.Features.Merge.Elements.Items;
+using App.Scripts.Features.Merge.Elements.Slots;
 using App.Scripts.Features.Merge.Factory;
 using App.Scripts.Features.Merge.Services;
-using App.Scripts.Features.Merge.Services.SelectionProviders;
+using App.Scripts.Features.Merge.Services.Hand;
+using App.Scripts.Features.Merge.Services.Hint;
+using App.Scripts.Features.Merge.Services.Selection;
 using App.Scripts.Modules.ObjectPool.MonoObjectPools;
 using App.Scripts.Modules.ObjectPool.Pools;
 using App.Scripts.Modules.Saves;
@@ -17,6 +19,7 @@ using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
 using UnityEngine;
+using UnityEngine.UI;
 using Zenject;
 using Grid = App.Scripts.Features.Merge.Elements.Grid;
 
@@ -31,9 +34,11 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         [Header("Grid")]
         [SerializeField] private List<Slot> _slots;
+
         [SerializeField] private GridFillConfig _gridFillConfig;
 
         [SerializeField] private Transform _overlayContainer;
+        [SerializeField] private Image _hintImage;
 
         [Header("Pools")]
         [SerializeField] private Item _itemTemplate;
@@ -48,6 +53,8 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
             Container.Bind<MergeResolver>().AsSingle().WithArguments(_catalogsDatabase);
             Container.Bind<SelectionProvider>().AsSingle();
+            Container.Bind<HandProvider>().AsSingle();
+            Container.Bind<HintsProvider>().AsSingle().WithArguments(_hintImage);
             BindItemsFactories();
             Container.BindInterfacesAndSelfTo<Grid>().AsSingle().WithArguments(_slots);
             Container.BindInterfacesAndSelfTo<GridFiller>().AsSingle().WithArguments(_gridFillConfig);

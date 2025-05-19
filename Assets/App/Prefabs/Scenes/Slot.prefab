@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3905826961384474432}
   - component: {fileID: 3227133704187114008}
   - component: {fileID: 1451339739809085710}
+  - component: {fileID: 3867144570372659630}
   m_Layer: 5
   m_Name: Slot
   m_TagString: Untagged
@@ -89,6 +90,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2384b4f2a64809938f67a3450db1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Visual>k__BackingField: {fileID: 3867144570372659630}
+--- !u!114 &3867144570372659630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858214501434505020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229c78e2dad24439ad1a5b59dfe97b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _selector: {fileID: 4659881808837426387}
 --- !u!1 &9158354039545389446
 GameObject:
@@ -101,7 +115,6 @@ GameObject:
   - component: {fileID: 5778397402876075656}
   - component: {fileID: 3371521655282239643}
   - component: {fileID: 4659881808837426387}
-  - component: {fileID: 1860874512920642163}
   m_Layer: 5
   m_Name: Selector
   m_TagString: Untagged
@@ -166,16 +179,3 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1860874512920642163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9158354039545389446}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a2384b4f2a64809938f67a3450db1f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selector: {fileID: 0}

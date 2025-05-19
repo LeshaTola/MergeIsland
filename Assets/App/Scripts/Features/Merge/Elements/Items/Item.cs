@@ -1,6 +1,8 @@
 ﻿using System;
 using App.Scripts.Features.Merge.Configs;
-using App.Scripts.Features.Merge.Services.SelectionProviders;
+using App.Scripts.Features.Merge.Elements.Slots;
+using App.Scripts.Features.Merge.Services.Hand;
+using App.Scripts.Features.Merge.Services.Selection;
 using App.Scripts.Modules.ObjectPool.PooledObjects;
 using App.Scripts.Modules.ObjectPool.Pools;
 using Cysharp.Threading.Tasks;
@@ -20,18 +22,22 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         private Transform _overlayParent;
         private SelectionProvider _selectionProvider;
+        private HandProvider _handProvider;
         private IPool<Item> _pool;
 
         private bool _isDragging;
-        
+
         public Slot CurrentSlot { get; private set; }
         public ItemConfig Config { get; private set; }
         public bool IsBlocked { get; set; }
         
-        public void Initialize(Transform overlayParent, SelectionProvider selectionProvider)
+        public void Initialize(Transform overlayParent,
+            SelectionProvider selectionProvider,
+            HandProvider handProvider)
         {
             _overlayParent = overlayParent;
             _selectionProvider = selectionProvider;
+            _handProvider = handProvider;
         }
 
         public void Setup(ItemConfig config)
@@ -49,7 +55,8 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
-            
+            _handProvider.TakenItem = this;
+
             _selectionProvider.ClearSelection();
             PlaceOnOverlay();
             SetRaycastTarget(false);
@@ -62,10 +69,11 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
-            
+
+            _handProvider.TakenItem = null;
+            SetRaycastTarget(true);
             _selectionProvider.Select(CurrentSlot);
             MoveToParent().Forget();
-            SetRaycastTarget(false);
             _isDragging = false;
         }
 
@@ -87,6 +95,11 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnPointerClick(PointerEventData eventData)
         {
+            if (IsBlocked)
+            {
+                return;
+            }
+            
             Animator.BounceAnimation().Forget();
             if (!CurrentSlot.IsSelected)
             {
@@ -132,7 +145,14 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnRelease()
         {
-            Config?.System?.Stop();
+            CleanupSystem();
+
+            if (_handProvider != null)
+            {
+                _handProvider.TakenItem = null;
+            }
+            SetRaycastTarget(true);
+            
             CurrentSlot?.Clear();
         }
 

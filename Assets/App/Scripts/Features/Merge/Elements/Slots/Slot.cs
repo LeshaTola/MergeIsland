@@ -1,30 +1,32 @@
 ﻿using App.Scripts.Features.Merge.Elements.Items;
 using App.Scripts.Features.Merge.Services;
+using App.Scripts.Features.Merge.Services.Hand;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
-namespace App.Scripts.Features.Merge.Elements
+namespace App.Scripts.Features.Merge.Elements.Slots
 {
-    public class Slot : MonoBehaviour, IDropHandler
+    public class Slot : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
     {
-        [SerializeField] private Image _selector;
-            
+        [field: SerializeField] public SlotVisual Visual { get; private set; }
+
         private MergeResolver _mergeResolver;
-        
+        private HandProvider _handProvider;
+
         public Item Item { get; private set; }
         public bool IsSelected { get; private set; }
 
-        public void Initialize(MergeResolver mergeResolver)
+        public void Initialize(MergeResolver mergeResolver, HandProvider handProvider)
         {
             _mergeResolver = mergeResolver;
+            _handProvider = handProvider;
         }
 
         public void SetSelected(bool isSelected)
         {
             IsSelected = isSelected;
-            _selector.gameObject.SetActive(IsSelected);
+            Visual.ShowSelector(IsSelected);
         }
 
         public void OnDrop(PointerEventData eventData)
@@ -49,6 +51,25 @@ namespace App.Scripts.Features.Merge.Elements
             DropItem(item);
         }
 
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            var takenItem = _handProvider.TakenItem;
+            if (takenItem == null || Item == null || takenItem == Item)
+            {
+                return;
+            }
+
+            if (takenItem.Config.Id.Equals(Item.Config.Id))
+            {
+                Visual.ShowMergeHint();
+            }
+        }
+
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            Visual.HideMergeHint();
+        }
+
         public void Clear()
         {
             Item = null;
@@ -62,6 +83,7 @@ namespace App.Scripts.Features.Merge.Elements
 
         private void TryMerge(Item item)
         {
+            Visual.HideMergeHint();
             if (!_mergeResolver.TryMerge(Item, item, out var mergeResult))
             {
                 if (Item.IsBlocked)
@@ -89,6 +111,5 @@ namespace App.Scripts.Features.Merge.Elements
             fromSlot.DropItem(currentItem);
             currentItem.MoveToParent().Forget();
         }
-
     }
 }

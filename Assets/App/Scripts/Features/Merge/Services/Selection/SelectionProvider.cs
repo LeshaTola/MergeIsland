@@ -1,7 +1,7 @@
 ﻿using System;
-using App.Scripts.Features.Merge.Elements;
+using App.Scripts.Features.Merge.Elements.Slots;
 
-namespace App.Scripts.Features.Merge.Services.SelectionProviders
+namespace App.Scripts.Features.Merge.Services.Selection
 {
     public class SelectionProvider
     {
