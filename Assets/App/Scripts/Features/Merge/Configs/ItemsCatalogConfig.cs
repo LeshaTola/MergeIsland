@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -69,6 +70,21 @@ namespace App.Scripts.Features.Merge.Configs
         private void OnValidate()
         {
             Id = name;
+            for (var index = 0; index < ItemsCatalog.Count; index++)
+            {
+                var itemConfig = ItemsCatalog[index];
+                itemConfig.Level = index;
+                itemConfig.IsLastLevel = false;
+            }
+            ItemsCatalog.Last().IsLastLevel = true;
+            
+            for (var index = 0; index < EmittersCatalog.Count; index++)
+            {
+                var itemConfig = EmittersCatalog[index];
+                itemConfig.Level = index;
+                itemConfig.IsLastLevel = false;
+            }
+            EmittersCatalog.Last().IsLastLevel = true;
         }
     }
 }

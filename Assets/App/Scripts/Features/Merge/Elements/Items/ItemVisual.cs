@@ -7,7 +7,13 @@ namespace App.Scripts.Features.Merge.Elements.Items
         [SerializeField] private GameObject _emitterActive;
         [SerializeField] private GameObject _emitterReload;
         [SerializeField] private GameObject _inWeb;
+        [SerializeField] private GameObject _lastLevel;
 
+        public void SetLastLevel(bool isLastLevel)
+        {
+            _lastLevel.SetActive(isLastLevel);
+        }
+        
         public void WebSetActive(bool active)
         {
             _inWeb.SetActive(active);

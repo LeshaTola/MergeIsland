@@ -29,4 +29,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 376664927d36d494e84974e2c5db7f75, type: 2}
   - {fileID: 11400000, guid: b067093fbf7f87c488a7ee0a445a4c78, type: 2}
   - {fileID: 11400000, guid: a58e029a149319c4fa88ee50183985fa, type: 2}
-  <EmittersCatalog>k__BackingField: []
+  <EmittersCatalog>k__BackingField:
+  - {fileID: 11400000, guid: 7a8036549b7254e4a8f05eff21cb4076, type: 2}

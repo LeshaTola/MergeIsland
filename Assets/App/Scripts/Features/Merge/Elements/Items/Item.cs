@@ -47,6 +47,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             InitializeSystem();
             
             _image.sprite = config.Sprite;
+            Visual.SetLastLevel(config.IsLastLevel);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -95,15 +96,15 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void OnPointerClick(PointerEventData eventData)
         {
-            if (IsBlocked)
-            {
-                return;
-            }
-            
             Animator.BounceAnimation().Forget();
             if (!CurrentSlot.IsSelected)
             {
                 _selectionProvider.Select(CurrentSlot);
+                return;
+            }
+            
+            if (IsBlocked)
+            {
                 return;
             }
             

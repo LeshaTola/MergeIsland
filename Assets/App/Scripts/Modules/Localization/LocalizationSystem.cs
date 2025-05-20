@@ -84,12 +84,12 @@ namespace App.Scripts.Modules.Localization
 
         public string Translate(string key)
         {
-            if (!languageDictionary.ContainsKey(key))
+            if (string.IsNullOrEmpty(key))
             {
-                return key;
+                return string.Empty;
             }
-
-            return languageDictionary[key];
+            
+            return !languageDictionary.TryGetValue(key, out var value) ? key : value;
         }
     }
 }

@@ -26,6 +26,9 @@ MonoBehaviour:
       Entry: 7
       Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.EmitterItemSystem,
         Features
+    - Name: Action
+      Entry: 6
+      Data: 
     - Name: _itemsCatalogConfig
       Entry: 10
       Data: 0
@@ -33,6 +36,8 @@ MonoBehaviour:
       Entry: 8
       Data: 
   <Id>k__BackingField: _ToolsEmmiter_1
-  <Name>k__BackingField: 
+  <Level>k__BackingField: 0
+  <IsLastLevel>k__BackingField: 1
+  <Name>k__BackingField: Rubbish
   <Sprite>k__BackingField: {fileID: -1299661578, guid: 6b1e1e1c551bad3428f825ba992a1e01, type: 3}
   <Cost>k__BackingField: 0

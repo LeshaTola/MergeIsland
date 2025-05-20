@@ -44,6 +44,7 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
         public override void Import(ItemSystem original)
         {
+            base.Import(original);
             var system = (EmitterItemSystem) original;
             _itemsCatalogConfig = system._itemsCatalogConfig;
         }

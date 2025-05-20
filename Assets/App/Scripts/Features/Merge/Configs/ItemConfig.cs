@@ -9,6 +9,11 @@ namespace App.Scripts.Features.Merge.Configs
     {
         [field: SerializeField] [field: ReadOnly]
         public string Id { get; private set; }
+        [field: SerializeField] [field: ReadOnly]
+        public int Level { get; set; }
+        
+        [field: SerializeField] [field: ReadOnly]
+        public bool IsLastLevel { get; set; }
 
         [field: SerializeField] public string Name { get; private set; }
         [field: SerializeField,PreviewField(Height = 100)] public Sprite Sprite { get; private set; }

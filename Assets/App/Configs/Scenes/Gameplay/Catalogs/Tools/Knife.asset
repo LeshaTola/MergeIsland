@@ -22,9 +22,17 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: <System>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.ItemSystem, Features
+    - Name: Action
       Entry: 6
       Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   <Id>k__BackingField: Knife
-  <Name>k__BackingField: 
+  <Level>k__BackingField: 4
+  <IsLastLevel>k__BackingField: 0
+  <Name>k__BackingField: Knife
   <Sprite>k__BackingField: {fileID: 1644752771, guid: f6cf53cbcad6a7740baccf186dad51f2, type: 3}
   <Cost>k__BackingField: 0

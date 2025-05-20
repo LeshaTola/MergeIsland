@@ -1,6 +1,7 @@
 ﻿using App.Scripts.Features.Energy.Providers;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Factory;
+using App.Scripts.Features.Merge.Screens;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -18,6 +19,13 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         {
             Item.Visual.WebSetActive(false);
             Item.IsBlocked = false;
+        }
+
+        public override SystemData GetSystemData()
+        {
+            var data = base.GetSystemData();
+            data.IsBlocked = true;
+            return data;
         }
     }
 }
