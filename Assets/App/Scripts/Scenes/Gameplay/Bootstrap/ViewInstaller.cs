@@ -1,5 +1,5 @@
-﻿using App.Scripts.Features.Energy.UI;
-using App.Scripts.Features.Energy.UI.Presenter;
+﻿using App.Scripts.Features.GameResources.Energy.UI;
+using App.Scripts.Features.GameResources.Energy.UI.Presenter;
 using App.Scripts.Features.Merge.Screens;
 using UnityEngine;
 using Zenject;

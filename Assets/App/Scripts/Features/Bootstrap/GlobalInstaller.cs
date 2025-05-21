@@ -10,7 +10,6 @@ using App.Scripts.Modules.Localization.Parsers;
 using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.Sounds.Providers;
 using App.Scripts.Modules.StateMachine.States.General;
-using App.Scripts.Modules.TasksSystem.Configs;
 using App.Scripts.Modules.TimeProvider;
 using Codice.Client.BaseCommands;
 using UnityEngine;

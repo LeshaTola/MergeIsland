@@ -30,6 +30,7 @@ namespace App.Scripts.Features.StateMachines.States
             {
                 await _sceneTransition.PlayOnAsync();
             }
+
             _cleanupService.Cleanup();
             CleanupAnimations();
         }

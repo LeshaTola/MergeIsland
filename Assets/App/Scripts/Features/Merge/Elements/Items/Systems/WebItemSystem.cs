@@ -1,9 +1,4 @@
-﻿using App.Scripts.Features.Energy.Providers;
-using App.Scripts.Features.Merge.Configs;
-using App.Scripts.Features.Merge.Factory;
-using App.Scripts.Features.Merge.Screens;
-using Cysharp.Threading.Tasks;
-using UnityEngine;
+﻿using App.Scripts.Features.Merge.Screens;
 
 namespace App.Scripts.Features.Merge.Elements.Items.Systems
 {
@@ -14,7 +9,7 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
             Item.Visual.WebSetActive(true);
             Item.IsBlocked = true;
         }
-        
+
         public override void Stop()
         {
             Item.Visual.WebSetActive(false);

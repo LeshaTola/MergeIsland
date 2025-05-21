@@ -33,12 +33,12 @@ namespace App.Scripts.Modules.Localization.Elements.Texts
 
         private void Localize()
         {
-            if (string.IsNullOrEmpty(_localizedPart))
+            var localizedText = string.Empty;
+            if (!string.IsNullOrEmpty(_localizedPart))
             {
-                return;
+                localizedText = _localizationSystem.Translate(_localizedPart);;
             }
-
-            var localizedText = _localizationSystem.Translate(_localizedPart);
+            
             _text.text = _isReversed ? _value + " " + localizedText : localizedText + " " + _value;
         }
 

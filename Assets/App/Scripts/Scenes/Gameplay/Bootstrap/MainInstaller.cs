@@ -1,8 +1,11 @@
 ﻿using System.Collections.Generic;
-using App.Scripts.Features.Energy.Configs;
-using App.Scripts.Features.Energy.Providers;
-using App.Scripts.Features.Energy.Saves;
-using App.Scripts.Features.Energy.Saves.Keys;
+using App.Scripts.Features.GameResources.Coins.Providers;
+using App.Scripts.Features.GameResources.Energy.Configs;
+using App.Scripts.Features.GameResources.Energy.Providers;
+using App.Scripts.Features.GameResources.Energy.Saves;
+using App.Scripts.Features.GameResources.Energy.Saves.Keys;
+using App.Scripts.Features.GameResources.Gems.Providers;
+using App.Scripts.Features.GameResources.Providers;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Elements.Filler;
 using App.Scripts.Features.Merge.Elements.Items;
@@ -59,7 +62,16 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             Container.BindInterfacesAndSelfTo<Grid>().AsSingle().WithArguments(_slots);
             Container.BindInterfacesAndSelfTo<GridFiller>().AsSingle().WithArguments(_gridFillConfig);
 
+            BindResources();
+        }
+
+        private void BindResources()
+        {
             BindEnergy();
+            Container.Bind<CoinsResourceProvider>().AsSingle();
+            Container.Bind<GemsResourceProvider>().AsSingle();
+            Container.Bind<ResourcesProvider>().AsSingle();
+            
         }
 
         private void BindEnergy()
@@ -79,6 +91,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
 
         private void BindItemsFactories()
         {
+            Container.Bind<ItemSystemActionFactory>().AsSingle();
             Container.Bind<ItemSystemsFactory>().AsSingle();
             Container.Bind<ItemConfigsFactory>().AsSingle();
             Container.Bind<ItemFactory>().AsSingle().WithArguments(_overlayContainer);

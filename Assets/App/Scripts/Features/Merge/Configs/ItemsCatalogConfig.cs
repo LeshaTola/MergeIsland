@@ -70,20 +70,31 @@ namespace App.Scripts.Features.Merge.Configs
         private void OnValidate()
         {
             Id = name;
-            for (var index = 0; index < ItemsCatalog.Count; index++)
+
+            if (ItemsCatalog != null && ItemsCatalog.Count != 0)
             {
-                var itemConfig = ItemsCatalog[index];
-                itemConfig.Level = index;
-                itemConfig.IsLastLevel = false;
+                for (var index = 0; index < ItemsCatalog.Count; index++)
+                {
+                    var itemConfig = ItemsCatalog[index];
+                    itemConfig.Level = index;
+                    itemConfig.IsLastLevel = false;
+                }
+
+                ItemsCatalog.Last().IsLastLevel = true;
             }
-            ItemsCatalog.Last().IsLastLevel = true;
-            
+
+            if (EmittersCatalog == null || EmittersCatalog.Count == 0)
+            {
+                return;
+            }
+
             for (var index = 0; index < EmittersCatalog.Count; index++)
             {
                 var itemConfig = EmittersCatalog[index];
                 itemConfig.Level = index;
                 itemConfig.IsLastLevel = false;
             }
+
             EmittersCatalog.Last().IsLastLevel = true;
         }
     }

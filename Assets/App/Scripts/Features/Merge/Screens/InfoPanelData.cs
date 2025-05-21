@@ -7,6 +7,6 @@ namespace App.Scripts.Features.Merge.Screens
     public class InfoPanelData
     {
         public ItemConfig ItemConfig;
-        public SystemData SystemData; 
+        public SystemData SystemData;
     }
 }

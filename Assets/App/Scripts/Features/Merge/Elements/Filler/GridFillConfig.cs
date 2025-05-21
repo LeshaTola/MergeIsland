@@ -7,9 +7,9 @@ using UnityEngine;
 namespace App.Scripts.Features.Merge.Elements.Filler
 {
     [CreateAssetMenu(fileName = "GridFillConfig", menuName = "Configs/Grid/Filler")]
-    public class GridFillConfig:SerializedScriptableObject
+    public class GridFillConfig : SerializedScriptableObject
     {
-        [field: SerializeField] public List<FillValue> Filling {get; private set;}
+        [field: SerializeField] public List<FillValue> Filling { get; private set; }
     }
 
     [Serializable]
@@ -18,6 +18,5 @@ namespace App.Scripts.Features.Merge.Elements.Filler
         public Vector2Int Position;
         public ItemConfig ItemConfig;
         public bool IsInWeb;
-        
     }
 }

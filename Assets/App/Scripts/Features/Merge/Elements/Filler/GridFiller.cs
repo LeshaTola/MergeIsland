@@ -28,8 +28,8 @@ namespace App.Scripts.Features.Merge.Elements.Filler
             _itemFactory.HideAll();
             foreach (var value in _config.Filling)
             {
-                var item = _itemFactory.GetItem(value.ItemConfig,value.IsInWeb);
-             
+                var item = _itemFactory.GetItem(value.ItemConfig, value.IsInWeb);
+
                 var slot = _grid.GetSlot(value.Position);
                 slot.DropItem(item);
                 item.MoveToParentImmediate();

@@ -1,6 +1,8 @@
-﻿using App.Scripts.Features.Energy.Providers;
+﻿using App.Scripts.Features.GameResources.Energy.Providers;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Factory;
+using App.Scripts.Features.Merge.Screens;
+using App.Scripts.Modules.PopupAndViews;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -15,7 +17,7 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         private readonly EnergyProvider _energyProvider;
         private readonly Grid _grid;
 
-        public EmitterItemSystem(ItemFactory itemFactory, 
+        public EmitterItemSystem(ItemFactory itemFactory,
             ItemConfigsFactory itemConfigsFactory,
             EnergyProvider energyProvider,
             Grid grid)
@@ -30,13 +32,13 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         {
             Item.Visual.EmitterActiveSetActive(true);
         }
-        
+
         public override void Stop()
         {
             Item.Visual.EmitterActiveSetActive(false);
             Item.Visual.EmitterReloadSetActive(false);
         }
-        
+
         public override void Execute()
         {
             SpawnItem();
@@ -51,12 +53,12 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
         private void SpawnItem()
         {
-            if (_energyProvider.CurrentEnergy <= 0)
+            if (_energyProvider.Value <= 0)
             {
                 return;
             }
-            
-            _energyProvider.ChangeEnergy(-1);
+
+            _energyProvider.ChangeValue(-1);
             var item = GetReadyItem();
             DropItemInSlot(item);
         }
@@ -64,10 +66,10 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         private Item GetReadyItem()
         {
             var item = _itemFactory.GetItem();
-            
+
             var newConfig = _itemConfigsFactory.GetConfig(_itemsCatalogConfig.ItemsCatalog[0]);
             item.Setup(newConfig);
-            
+
             item.transform.position = Item.transform.position;
             return item;
         }
@@ -77,6 +79,15 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
             var slot = _grid.GetUnusedSlot();
             slot.DropItem(item);
             item.MoveToParent().Forget();
+        }
+
+        public override SystemData GetSystemData()
+        {
+            var data = base.GetSystemData();
+            data.Description = ConstStrings.TAP_TO_GET_ITEMS + " " + data.Description;
+            data.Sprites.Add(Item.Config.Sprite);
+            data.Sprites.Add(_itemsCatalogConfig.ItemsCatalog[0].Sprite);
+            return data;
         }
     }
 }

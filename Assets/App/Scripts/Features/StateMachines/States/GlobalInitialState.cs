@@ -19,6 +19,7 @@ namespace App.Scripts.Features.StateMachines.States
                 await StateMachine.ChangeState(NextState);
                 return;
             }
+
             SetTargetFPS();
             // YG2.StickyAdActivity(YG2.saves.IsCanShowAd);
 

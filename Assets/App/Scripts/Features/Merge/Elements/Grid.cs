@@ -33,7 +33,7 @@ namespace App.Scripts.Features.Merge.Elements
         {
             return _slots.FirstOrDefault(x => x.Item == null);
         }
-        
+
         public Slot GetSlot(Vector2Int position)
         {
             return _slots[position.y * 9 + position.x];

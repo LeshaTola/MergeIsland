@@ -6,6 +6,7 @@ namespace App.Scripts.Features.Merge.Services.Selection
     public class SelectionProvider
     {
         public event Action<Slot> OnSlotSelected;
+        public event Action OnSelectionCleared;
 
         private Slot _selected;
 
@@ -15,14 +16,20 @@ namespace App.Scripts.Features.Merge.Services.Selection
             OnSlotSelected?.Invoke(slot);
         }
 
+        public void ClearSelection()
+        {
+            ClearSelectionWithoutNotification();
+            OnSelectionCleared?.Invoke();
+        }
+
         public void SelectWithoutNotification(Slot slot)
         {
-            ClearSelection();
+            ClearSelectionWithoutNotification();
             _selected = slot;
             _selected.SetSelected(true);
         }
 
-        public void ClearSelection()
+        public void ClearSelectionWithoutNotification()
         {
             if (_selected == null)
             {

@@ -32,22 +32,23 @@ namespace App.Scripts.Features.Merge.Elements.Slots
         public void OnDrop(PointerEventData eventData)
         {
             var item = eventData.pointerDrag.GetComponent<Item>();
-            
+
             if (Item != null)
             {
                 if (item == Item)
                 {
                     return;
                 }
+
                 TryMerge(item);
                 return;
             }
-            
+
             if (item.IsBlocked)
             {
                 return;
             }
-            
+
             DropItem(item);
         }
 
@@ -89,7 +90,8 @@ namespace App.Scripts.Features.Merge.Elements.Slots
                 if (Item.IsBlocked)
                 {
                     return;
-                }   
+                }
+
                 SwapItems(item);
             }
             else
@@ -105,7 +107,7 @@ namespace App.Scripts.Features.Merge.Elements.Slots
             var fromSlot = item.CurrentSlot;
             var currentItem = Item;
             currentItem.ChangeSlot(null);
-            
+
             DropItem(item);
 
             fromSlot.DropItem(currentItem);

@@ -13,7 +13,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
         {
             _lastLevel.SetActive(isLastLevel);
         }
-        
+
         public void WebSetActive(bool active)
         {
             _inWeb.SetActive(active);

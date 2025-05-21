@@ -1,5 +1,4 @@
 ﻿using App.Scripts.Features.Merge.Services.Hint;
-using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
@@ -17,8 +16,11 @@ namespace App.Scripts.Features.Merge.Elements.Slots
         {
             _hintsProvider = hintsProvider;
         }
-        
-        public void ShowSelector(bool show) => _selector.gameObject.SetActive(show);
+
+        public void ShowSelector(bool show)
+        {
+            _selector.gameObject.SetActive(show);
+        }
 
         public void ShowMergeHint()
         {

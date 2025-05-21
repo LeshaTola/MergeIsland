@@ -24,8 +24,11 @@ MonoBehaviour:
     - Name: <System>k__BackingField
       Entry: 7
       Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.ItemSystem, Features
-    - Name: Action
-      Entry: 6
+    - Name: <Action>k__BackingField
+      Entry: 7
+      Data: 1|App.Scripts.Features.Merge.Elements.Items.Actions.SellAction, Features
+    - Name: 
+      Entry: 8
       Data: 
     - Name: 
       Entry: 8

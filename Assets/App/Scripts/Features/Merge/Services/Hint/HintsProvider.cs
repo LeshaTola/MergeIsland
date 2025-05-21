@@ -16,7 +16,7 @@ namespace App.Scripts.Features.Merge.Services.Hint
         public void ShowMergeHint(Vector3 position)
         {
             _hintImage.transform.position = position;
-            
+
             _hintImage.gameObject.SetActive(true);
             _hintImage.transform.localScale = Vector3.zero;
             _hintImage.transform.DOScale(1f, 0.25f);

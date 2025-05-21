@@ -1,5 +1,4 @@
-﻿using System;
-using App.Scripts.Features.Merge.Configs;
+﻿using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Elements.Slots;
 using App.Scripts.Features.Merge.Services.Hand;
 using App.Scripts.Features.Merge.Services.Selection;
@@ -12,11 +11,12 @@ using UnityEngine.UI;
 
 namespace App.Scripts.Features.Merge.Elements.Items
 {
-    public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler, IPoolableObject<Item>
+    public class Item : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler,
+        IPoolableObject<Item>
     {
         [SerializeField] private RectTransform _rectTransform;
         [SerializeField] private Image _image;
-        
+
         [field: SerializeField] public ItemVisual Visual { get; private set; }
         [field: SerializeField] public ItemAnimator Animator { get; private set; }
 
@@ -30,7 +30,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
         public Slot CurrentSlot { get; private set; }
         public ItemConfig Config { get; private set; }
         public bool IsBlocked { get; set; }
-        
+
         public void Initialize(Transform overlayParent,
             SelectionProvider selectionProvider,
             HandProvider handProvider)
@@ -45,7 +45,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             CleanupSystem();
             Config = config;
             InitializeSystem();
-            
+
             _image.sprite = config.Sprite;
             Visual.SetLastLevel(config.IsLastLevel);
         }
@@ -56,9 +56,10 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
+
             _handProvider.TakenItem = this;
 
-            _selectionProvider.ClearSelection();
+            _selectionProvider.ClearSelectionWithoutNotification();
             PlaceOnOverlay();
             SetRaycastTarget(false);
             _isDragging = true;
@@ -84,7 +85,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
-         
+
             RectTransformUtility.ScreenPointToWorldPointInRectangle(
                 _rectTransform,
                 eventData.position,
@@ -102,12 +103,12 @@ namespace App.Scripts.Features.Merge.Elements.Items
                 _selectionProvider.Select(CurrentSlot);
                 return;
             }
-            
+
             if (IsBlocked)
             {
                 return;
             }
-            
+
             Config.System?.Execute();
         }
 
@@ -131,6 +132,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
+
             transform.SetParent(CurrentSlot.transform);
         }
 
@@ -141,6 +143,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void Release()
         {
+            _selectionProvider.ClearSelection();
             _pool.Release(this);
         }
 
@@ -152,8 +155,9 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 _handProvider.TakenItem = null;
             }
+
             SetRaycastTarget(true);
-            
+
             CurrentSlot?.Clear();
         }
 
@@ -173,7 +177,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             {
                 return;
             }
-            
+
             Config.System.Item = this;
             Config.System.Start();
         }

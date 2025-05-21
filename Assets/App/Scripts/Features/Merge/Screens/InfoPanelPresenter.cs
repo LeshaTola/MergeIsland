@@ -26,17 +26,21 @@ namespace App.Scripts.Features.Merge.Screens
         public override void Initialize()
         {
             _infoPanel.Initialize(_localizationSystem);
-        
+
             _infoPanel.OnButtonClick += OnButtonClick;
             _selectionProvider.OnSlotSelected += OnSlotSelected;
+            _selectionProvider.OnSelectionCleared += _infoPanel.SetupNoSelected;
+            
+            _infoPanel.SetupNoSelected();
         }
 
         public override void Cleanup()
         {
             base.Cleanup();
-        
+
             _infoPanel.OnButtonClick -= OnButtonClick;
             _selectionProvider.OnSlotSelected -= OnSlotSelected;
+            _selectionProvider.OnSelectionCleared -= _infoPanel.SetupNoSelected;
         }
 
         private void Setup(ItemConfig itemConfig)
@@ -47,22 +51,23 @@ namespace App.Scripts.Features.Merge.Screens
             {
                 _itemConfig.System.OnValueChanged += OnValueChanged;
             }
+
             _infoPanel.Setup(itemConfig);
         }
 
         public override void Default()
         {
-            if (_itemConfig == null|| _itemConfig.System == null)
+            if (_itemConfig == null || _itemConfig.System == null)
             {
                 return;
             }
-            
+
             _itemConfig.System.OnValueChanged -= OnValueChanged;
         }
 
         private void OnButtonClick()
         {
-            //ItemConfig execute action
+            _itemConfig.System.Action.Execute();
         }
 
         private void OnSlotSelected(Slot slot)
@@ -72,7 +77,6 @@ namespace App.Scripts.Features.Merge.Screens
 
         private void OnValueChanged()
         {
-            
         }
     }
 }

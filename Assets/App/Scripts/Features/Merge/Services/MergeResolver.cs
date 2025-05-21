@@ -1,5 +1,4 @@
 ﻿using App.Scripts.Features.Merge.Configs;
-using App.Scripts.Features.Merge.Elements;
 using App.Scripts.Features.Merge.Elements.Items;
 using App.Scripts.Features.Merge.Factory;
 
@@ -40,6 +39,7 @@ namespace App.Scripts.Features.Merge.Services
 
                 return catalogConfig.Value.GetNextLevelConfig(id);
             }
+
             return null;
         }
     }

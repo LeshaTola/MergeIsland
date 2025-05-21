@@ -9,7 +9,7 @@ namespace App.Scripts.Features.Merge.Screens
     {
         public bool IsBlocked;
         public string Description;
-        public List<Sprite> Sprites;
+        public List<Sprite> Sprites = new();
         public ActionData ActionData;
         public int Timer;
     }

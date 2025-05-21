@@ -6,10 +6,12 @@ namespace App.Scripts.Features.Merge.Factory
     public class ItemSystemsFactory
     {
         private readonly DiContainer _container;
+        private readonly ItemSystemActionFactory _actionFactory;
 
-        public ItemSystemsFactory(DiContainer container)
+        public ItemSystemsFactory(DiContainer container, ItemSystemActionFactory actionFactory)
         {
             _container = container;
+            _actionFactory = actionFactory;
         }
 
         public ItemSystem GetSystem(ItemSystem original)
@@ -18,11 +20,13 @@ namespace App.Scripts.Features.Merge.Factory
             {
                 return null;
             }
+
             var system = (ItemSystem) _container.Instantiate(original.GetType());
+            system.Action = _actionFactory.GetAction(original.Action);
             system.Import(original);
             return system;
         }
-        
+
         public ItemSystem GetSystem<T>() where T : ItemSystem
         {
             var system = (ItemSystem) _container.Instantiate(typeof(T));

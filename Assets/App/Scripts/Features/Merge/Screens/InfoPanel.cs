@@ -5,6 +5,7 @@ using App.Scripts.Modules.Localization;
 using App.Scripts.Modules.Localization.Elements.Buttons;
 using App.Scripts.Modules.Localization.Elements.Texts;
 using App.Scripts.Modules.Localization.Localizers;
+using App.Scripts.Modules.PopupAndViews;
 using App.Scripts.Modules.Screens;
 using TMPro;
 using UnityEngine;
@@ -18,21 +19,24 @@ namespace App.Scripts.Features.Merge.Screens
 
         [Header("General")]
         [SerializeField] private Image _image;
+
         [SerializeField] private GameObject _imageObject;
         [SerializeField] private TMPLocalizer _nameText;
         [SerializeField] private LocalizedWithValue _levelText;
-        
+
         [Header("Description")]
-        [SerializeField] private Image _blockImage; 
+        [SerializeField] private Image _blockImage;
+
         [SerializeField] private TMPLocalizer _descriptionText;
-        [SerializeField] private GameObject _craftPanel; 
-        [SerializeField] private List<Image> _craftImages; 
+        [SerializeField] private GameObject _craftPanel;
+        [SerializeField] private List<Image> _craftImages;
         [SerializeField] private TextMeshProUGUI _timerText;
 
         [Header("Action")]
-        [SerializeField] private GameObject _actionPanel; 
+        [SerializeField] private GameObject _actionPanel;
+
         [SerializeField] private TMPLocalizer _actionText;
-        [SerializeField] private Image _actionImage; 
+        [SerializeField] private Image _actionImage;
         [SerializeField] private TMPLocalizedButton _actionButton;
 
         public void Initialize(ILocalizationSystem localizationSystem)
@@ -61,17 +65,25 @@ namespace App.Scripts.Features.Merge.Screens
             }
         }
 
+        public void SetupNoSelected()
+        {
+            Default();
+            _descriptionText.Key = ConstStrings.SELECT_SOMETHING;
+            _descriptionText.Translate();
+        }
+
         public override void Default()
         {
             _imageObject.SetActive(false);
             _nameText.Text.text = string.Empty;
-            _levelText.Setup(string.Empty,string.Empty);
+            _levelText.Setup(string.Empty, string.Empty);
             _descriptionText.Text.text = string.Empty;
             _craftPanel.SetActive(false);
             foreach (var image in _craftImages)
             {
                 image.gameObject.SetActive(false);
             }
+
             _blockImage.gameObject.SetActive(false);
             _timerText.gameObject.SetActive(false);
             _actionPanel.SetActive(false);
@@ -89,10 +101,11 @@ namespace App.Scripts.Features.Merge.Screens
 
         private void SetupGeneral(Sprite sprite, string itemName, int level)
         {
+            _imageObject.SetActive(true);
             _image.sprite = sprite;
             _nameText.Key = itemName;
             _levelText.Setup("level: ", (level + 1).ToString());
-        
+
             _nameText.Translate();
         }
 
@@ -110,11 +123,11 @@ namespace App.Scripts.Features.Merge.Screens
                     _timerText.gameObject.SetActive(true);
                     _timerText.text = systemData.Timer.ToString();
                 }
-                
+
                 _descriptionText.Key = systemData.Description;
                 _descriptionText.Translate();
             }
-            
+
             SetupAction(systemData.ActionData);
         }
 
@@ -124,13 +137,13 @@ namespace App.Scripts.Features.Merge.Screens
             {
                 return;
             }
-            
+
             _craftPanel.SetActive(true);
             for (int i = 0; i < systemData.Sprites.Count; i++)
             {
                 var sprite = systemData.Sprites[i];
                 var craftImage = _craftImages[i];
-                        
+
                 craftImage.gameObject.SetActive(true);
                 craftImage.sprite = sprite;
             }
@@ -142,12 +155,14 @@ namespace App.Scripts.Features.Merge.Screens
             {
                 return;
             }
-            
+
             _actionPanel.SetActive(true);
             _actionText.Key = actionData.ActionText;
+
+            _actionImage.gameObject.SetActive(actionData.ActionImage != null);
             _actionImage.sprite = actionData.ActionImage;
             _actionButton.UpdateText(actionData.ButtonText);
-        
+
             _actionText.Translate();
             _actionButton.Translate();
         }

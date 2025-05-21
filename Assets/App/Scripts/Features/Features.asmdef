@@ -1,25 +1,25 @@
 {
-    "name": "Features",
-    "rootNamespace": "",
-    "references": [
-        "GUID:f51ebe6a0ceec4240a699833d6309b23",
-        "GUID:029c1c1b674aaae47a6841a0b89ad80e",
-        "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f",
-        "GUID:2bafac87e7f4b9b418d9448d219b01ab",
-        "GUID:27619889b8ba8c24980f49ee34dbb44a",
-        "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
-        "GUID:343deaaf83e0cee4ca978e7df0b80d21",
-        "GUID:da989bc64fb488b4e869d3bb68d6bbac",
-        "GUID:2563596426b022b41bac9820f00fe46c"
-    ],
-    "includePlatforms": [],
-    "excludePlatforms": [],
-    "allowUnsafeCode": false,
-    "overrideReferences": false,
-    "precompiledReferences": [],
-    "autoReferenced": true,
-    "defineConstraints": [],
-    "versionDefines": [],
-    "noEngineReferences": false
+  "name": "Features",
+  "rootNamespace": "",
+  "references": [
+    "GUID:f51ebe6a0ceec4240a699833d6309b23",
+    "GUID:029c1c1b674aaae47a6841a0b89ad80e",
+    "GUID:dc47925d1a5fa2946bdd37746b2b5d48",
+    "GUID:6055be8ebefd69e48b49212b09b47b2f",
+    "GUID:2bafac87e7f4b9b418d9448d219b01ab",
+    "GUID:27619889b8ba8c24980f49ee34dbb44a",
+    "GUID:0d8beb7f090555447a6cf5ce9e54dbb4",
+    "GUID:343deaaf83e0cee4ca978e7df0b80d21",
+    "GUID:da989bc64fb488b4e869d3bb68d6bbac",
+    "GUID:2563596426b022b41bac9820f00fe46c"
+  ],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
 }
