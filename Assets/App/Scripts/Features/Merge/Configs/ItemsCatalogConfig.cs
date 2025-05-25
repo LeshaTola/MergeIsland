@@ -44,6 +44,12 @@ namespace App.Scripts.Features.Merge.Configs
             return null;
         }
 
+        public ItemConfig GetItemConfig(string id)
+        {
+            var index = FindItemIndex(id);
+            return index != -1 ? ItemsCatalog[index] : null;
+        }
+        
         private ItemConfig GetNextItemConfig(string id)
         {
             var index = FindItemIndex(id);

@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac6d749a54ad07e4a9325f1a05465726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _advertisementConfig: {fileID: 11400000, guid: c17ebd94f57782c409a356ca898f6de5, type: 2}
+  _sceneTransition: {fileID: 2581158251069753768}
   _localizationDatabase: {fileID: 11400000, guid: b35b1d8781c98784799fcbbe9a08635f, type: 2}
   _language: en
-  _sceneTransition: {fileID: 2581158251069753768}
   _soundProvider: {fileID: 646344925996821794}
   _audioMixer: {fileID: 24100000, guid: 2cc47cef2a91b52489947874f5b0bbdf, type: 2}
 --- !u!1 &3369375396448502721

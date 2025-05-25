@@ -22,9 +22,6 @@ namespace App.Scripts.Features.LevelSystem.Services
         public ExperienceService(ExperienceConfig config)
         {
             _config = config;
-            CurrentExperience = 0;
-            CurrentLevel = 0;
-            NotifyChange();
         }
 
         public void AddExperience(int amount)

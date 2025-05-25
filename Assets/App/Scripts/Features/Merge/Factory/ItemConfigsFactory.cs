@@ -6,11 +6,13 @@ namespace App.Scripts.Features.Merge.Factory
 {
     public class ItemConfigsFactory
     {
+        private readonly ItemConfigsFactoryConfig _config;
         private readonly ItemSystemsFactory _itemSystemsFactory;
 
-        public ItemConfigsFactory(ItemSystemsFactory itemSystemsFactory)
+        public ItemConfigsFactory(ItemSystemsFactory itemSystemsFactory, ItemConfigsFactoryConfig config)
         {
             _itemSystemsFactory = itemSystemsFactory;
+            _config = config;
         }
 
         public ItemConfig GetConfig(ItemConfig original, bool isInWeb = false)
@@ -29,7 +31,7 @@ namespace App.Scripts.Features.Merge.Factory
         private ItemSystem GetSystem(ItemConfig original, bool isInWeb)
         {
             return isInWeb
-                ? _itemSystemsFactory.GetSystem<WebItemSystem>()
+                ? _itemSystemsFactory.GetSystem(_config.WebItemSystem)
                 : _itemSystemsFactory.GetSystem(original.System);
         }
     }

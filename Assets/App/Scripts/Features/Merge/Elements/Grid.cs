@@ -28,7 +28,27 @@ namespace App.Scripts.Features.Merge.Elements
                 slot.Initialize(_mergeResolver, _handProvider);
             }
         }
+        
+        public Slot GetNearestUnusedSlot(Vector2 centerPosition)
+        {
+            Slot nearest = null;
+            float minDistance = float.MaxValue;
 
+            foreach (var slot in _slots)
+            {
+                if (slot.Item != null) continue;
+
+                float distance = Vector2.Distance(slot.transform.position, centerPosition);
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    nearest = slot;
+                }
+            }
+
+            return nearest;
+        }
+        
         public Slot GetUnusedSlot()
         {
             return _slots.FirstOrDefault(x => x.Item == null);

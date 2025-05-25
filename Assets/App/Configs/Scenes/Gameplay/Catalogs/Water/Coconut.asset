@@ -15,16 +15,55 @@ MonoBehaviour:
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
-    ReferencedUnityObjects: []
+    ReferencedUnityObjects:
+    - {fileID: 11400000, guid: 87f67d4d840991041a66a99ecd22c85e, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
     PrefabModifications: []
     SerializationNodes:
     - Name: <System>k__BackingField
+      Entry: 7
+      Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.AddResourceItemSystem,
+        Features
+    - Name: <Action>k__BackingField
       Entry: 6
       Data: 
+    - Name: _cost
+      Entry: 7
+      Data: 1|App.Scripts.Features.SellBuy.Configs.Cost, Features
+    - Name: IsAd
+      Entry: 5
+      Data: false
+    - Name: ResourceConfig
+      Entry: 10
+      Data: 0
+    - Name: Count
+      Entry: 3
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: _endPosition
+      Entry: 7
+      Data: UnityEngine.Vector3, UnityEngine.CoreModule
+    - Name: 
+      Entry: 4
+      Data: -2.7
+    - Name: 
+      Entry: 4
+      Data: 4.16
+    - Name: 
+      Entry: 4
+      Data: 0
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
   <Id>k__BackingField: Coconut
-  <Name>k__BackingField: 
+  <Level>k__BackingField: 1
+  <IsLastLevel>k__BackingField: 0
+  <Name>k__BackingField: Coconut
   <Sprite>k__BackingField: {fileID: 1927769435, guid: d7c1bcd337477b84c9f42f94db4570a0, type: 3}
-  <Cost>k__BackingField: 0

@@ -28,7 +28,7 @@ namespace App.Scripts.Features.GameResources.Energy.Providers
         }
 
         public EnergyProvider(EnergyConfig config, ITimeProvider timeProvider,
-            IDataProvider<EnergyData> energyDataProvider)
+            IDataProvider<EnergyData> energyDataProvider) : base(config.ResourceConfig)
         {
             _config = config;
             _timeProvider = timeProvider;

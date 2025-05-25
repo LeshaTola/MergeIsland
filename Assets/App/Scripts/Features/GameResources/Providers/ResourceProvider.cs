@@ -1,18 +1,26 @@
 ﻿using System;
+using App.Scripts.Features.GameResources.Configs;
+using App.Scripts.Features.SellBuy.Services;
 
 namespace App.Scripts.Features.GameResources.Providers
 {
-    public class ResourceProvider : IResourceProvider
+    public abstract class ResourceProvider : IResourceProvider
     {
-        public event Action OnValueChanged;
-        
+        public event Action<int> OnValueChanged;
+
+        public ResourceProvider(ResourceConfig resourceConfig)
+        {
+            ResourceConfig = resourceConfig;
+        }
+
+        public ResourceConfig ResourceConfig { get; }
         public int Value { get; protected set; }
         
         public virtual void ChangeValue(int value)
         {
             Value += value;
             Clamp();
-            OnValueChanged?.Invoke();
+            OnValueChanged?.Invoke(Value);
         }
 
         public bool IsEnough(int value)

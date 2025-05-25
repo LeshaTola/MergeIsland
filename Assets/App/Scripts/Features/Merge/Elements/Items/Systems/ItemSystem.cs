@@ -12,20 +12,12 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
         [field: SerializeField] public ItemSystemAction Action { get; set; }
 
-        private Item _item;
+        public Item Item { get; private set; }
 
-        public Item Item
+        public virtual void Initialize(Item item)
         {
-            get => _item;
-            set
-            {
-                _item = value;
-
-                if (Action != null)
-                {
-                    Action.Item = _item;
-                }
-            }
+            Item = item;
+            Action?.Initialize(item);
         }
 
         public virtual void Start()

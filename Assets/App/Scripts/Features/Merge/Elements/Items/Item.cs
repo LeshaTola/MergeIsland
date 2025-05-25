@@ -45,6 +45,8 @@ namespace App.Scripts.Features.Merge.Elements.Items
             CleanupSystem();
             Config = config;
             InitializeSystem();
+            
+            Animator.MergeAnimation().Forget();
 
             _image.sprite = config.Sprite;
             Visual.SetLastLevel(config.IsLastLevel);
@@ -58,7 +60,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
             }
 
             _handProvider.TakenItem = this;
-
+            
             _selectionProvider.ClearSelectionWithoutNotification();
             PlaceOnOverlay();
             SetRaycastTarget(false);
@@ -98,7 +100,7 @@ namespace App.Scripts.Features.Merge.Elements.Items
         public void OnPointerClick(PointerEventData eventData)
         {
             Animator.BounceAnimation().Forget();
-            if (!CurrentSlot.IsSelected)
+            if (CurrentSlot != null && !CurrentSlot.IsSelected)
             {
                 _selectionProvider.Select(CurrentSlot);
                 return;
@@ -143,13 +145,13 @@ namespace App.Scripts.Features.Merge.Elements.Items
 
         public void Release()
         {
-            _selectionProvider.ClearSelection();
             _pool.Release(this);
         }
 
         public void OnRelease()
         {
             CleanupSystem();
+            _selectionProvider?.ClearSelection();
 
             if (_handProvider != null)
             {
@@ -157,8 +159,9 @@ namespace App.Scripts.Features.Merge.Elements.Items
             }
 
             SetRaycastTarget(true);
-
             CurrentSlot?.Clear();
+            CurrentSlot = null;
+            _isDragging = false;
         }
 
         private void SetRaycastTarget(bool isActive)
@@ -178,12 +181,17 @@ namespace App.Scripts.Features.Merge.Elements.Items
                 return;
             }
 
-            Config.System.Item = this;
+            Config.System.Initialize(this) ;
             Config.System.Start();
         }
 
         private void CleanupSystem()
         {
+            if (_selectionProvider != null && _selectionProvider.Selected == CurrentSlot)
+            {
+                _selectionProvider.ClearSelection();
+            }
+            
             if (Config != null)
             {
                 Config.System?.Stop();

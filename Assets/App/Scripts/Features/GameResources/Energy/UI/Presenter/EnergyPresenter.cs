@@ -19,7 +19,7 @@ namespace App.Scripts.Features.GameResources.Energy.UI.Presenter
         {
             _energyProvider.OnValueChanged += UpdateUI;
             _energyProvider.OnEnergyTimerChanged += UpdateTimer;
-            UpdateUI();
+            UpdateUI(_energyProvider.Value);
         }
 
         public void Cleanup()
@@ -28,9 +28,9 @@ namespace App.Scripts.Features.GameResources.Energy.UI.Presenter
             _energyProvider.OnEnergyTimerChanged -= UpdateTimer;
         }
 
-        private void UpdateUI()
+        private void UpdateUI(int value)
         {
-            _energySliderUI.UpdateUI(_energyProvider.Value, _energyProvider.Config.MaxEnergy);
+            _energySliderUI.UpdateUI(value, _energyProvider.Config.MaxEnergy);
         }
 
         private void UpdateTimer()

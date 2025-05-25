@@ -23,5 +23,10 @@ namespace App.Scripts.Features.Merge.Factory
             action.Import(original);
             return action;
         }
+
+        public T GetAction<T>() where T : ItemSystemAction
+        {
+            return (T) _container.Instantiate(typeof(T));
+        }
     }
 }

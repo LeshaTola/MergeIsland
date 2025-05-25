@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7432620210d493aa3189da558a05afb, type: 3}
+  m_Name: SellBuyConfig
+  m_EditorClassIdentifier: 
+  <SellMultiplier>k__BackingField: 1
+  <SellResourceConfig>k__BackingField: {fileID: 11400000, guid: 26639b7647ac07c4ea99e02c6587b663, type: 2}
+  <BuyMultiplier>k__BackingField: 2
+  <BuyResourceConfig>k__BackingField: {fileID: 11400000, guid: e3dfd3213a4e2b041a83819fe9a91d63, type: 2}
+  <MaxLevelForReward>k__BackingField: 3

@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,14 +11,23 @@ namespace App.Scripts.Features.GameResources.Energy.UI
         [SerializeField] private TextMeshProUGUI _energyText;
         [SerializeField] private TextMeshProUGUI _recoveringTimerText;
 
+        private Tween _uiTween;
+        private int _currentDisplayedValue;
+
         public void UpdateUI(int currentValue, int maxValue)
         {
-            _energyText.text = $"{currentValue}/{maxValue}";
-
             _recoveringTimerText.gameObject.SetActive(currentValue < maxValue);
 
-            float value = CalculateSliderValue(currentValue, maxValue);
-            _fillImage.fillAmount = value;
+            _uiTween?.Kill();
+            _uiTween = DOVirtual.Float(_currentDisplayedValue, currentValue, 0.3f, value =>
+                {
+                    int animatedValue = Mathf.RoundToInt(value);
+                    _energyText.text = $"{animatedValue}/{maxValue}";
+                    _currentDisplayedValue = animatedValue;
+                    _fillImage.fillAmount  = CalculateSliderValue(value, maxValue);
+                })
+                .OnComplete(() => _currentDisplayedValue = currentValue)
+                .SetEase(Ease.OutQuad);
         }
 
         public void UpdateTimer(int totalSeconds)
@@ -28,9 +38,9 @@ namespace App.Scripts.Features.GameResources.Energy.UI
             _recoveringTimerText.text = timeString;
         }
 
-        private static float CalculateSliderValue(int currentValue, int maxValue)
+        private static float CalculateSliderValue(float currentValue, int maxValue)
         {
-            float value = (float) currentValue / maxValue;
+            float value = currentValue / maxValue;
             value = Mathf.Clamp01(value);
             return value;
         }

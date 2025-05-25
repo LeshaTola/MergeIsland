@@ -58,9 +58,16 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
                 return;
             }
 
-            _energyProvider.ChangeValue(-1);
+            var slot = _grid.GetNearestUnusedSlot(Item.CurrentSlot.transform.position);
+            if (slot == null)
+            {
+                return;
+            }
             var item = GetReadyItem();
-            DropItemInSlot(item);
+            _energyProvider.ChangeValue(-1);
+
+            slot.DropItem(item);
+            item.MoveToParent().Forget();
         }
 
         private Item GetReadyItem()
@@ -72,13 +79,6 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 
             item.transform.position = Item.transform.position;
             return item;
-        }
-
-        private void DropItemInSlot(Item item)
-        {
-            var slot = _grid.GetUnusedSlot();
-            slot.DropItem(item);
-            item.MoveToParent().Forget();
         }
 
         public override SystemData GetSystemData()

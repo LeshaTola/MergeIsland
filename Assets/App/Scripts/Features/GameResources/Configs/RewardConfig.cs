@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿using App.Scripts.Features.SellBuy.Services;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace App.Scripts.Features.GameResources.Configs
@@ -9,7 +10,7 @@ namespace App.Scripts.Features.GameResources.Configs
         [field: SerializeField] [field: ReadOnly]
         public string Id { get; private set; }
 
-        // [field: SerializeField] public ItemConfig Reward { get; private set; }
+         [field: SerializeField] public ResourceConfig Reward { get; private set; }
         [field: SerializeField] public Color Color { get; private set; } = Color.white;
         [field: SerializeField] public int Count { get; set; }
 

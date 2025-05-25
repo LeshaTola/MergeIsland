@@ -8,7 +8,7 @@ namespace App.Scripts.Features.Merge.Services.Selection
         public event Action<Slot> OnSlotSelected;
         public event Action OnSelectionCleared;
 
-        private Slot _selected;
+        public Slot Selected { get; private set; }
 
         public void Select(Slot slot)
         {
@@ -25,19 +25,19 @@ namespace App.Scripts.Features.Merge.Services.Selection
         public void SelectWithoutNotification(Slot slot)
         {
             ClearSelectionWithoutNotification();
-            _selected = slot;
-            _selected.SetSelected(true);
+            Selected = slot;
+            Selected.SetSelected(true);
         }
 
         public void ClearSelectionWithoutNotification()
         {
-            if (_selected == null)
+            if (Selected == null)
             {
                 return;
             }
 
-            _selected.SetSelected(false);
-            _selected = null;
+            Selected.SetSelected(false);
+            Selected = null;
         }
     }
 }

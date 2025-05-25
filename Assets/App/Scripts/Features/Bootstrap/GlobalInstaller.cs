@@ -1,4 +1,5 @@
-﻿using App.Scripts.Features.SceneTransitions;
+﻿using App.Scripts.Features.Advertisement.Providers;
+using App.Scripts.Features.SceneTransitions;
 using App.Scripts.Features.StateMachines.States;
 using App.Scripts.Modules.Commands.Provider;
 using App.Scripts.Modules.FileProvider;
@@ -20,16 +21,16 @@ namespace App.Scripts.Features.Bootstrap
 {
     public class GlobalInstaller : MonoInstaller
     {
+        [SerializeField] private AdvertisementConfig _advertisementConfig;
+        [SerializeField] private SceneTransition _sceneTransition;
+        
+        [Header("Language")]
         [SerializeField] private LocalizationDatabase _localizationDatabase;
         [SerializeField] private string _language;
 
-        [SerializeField] private SceneTransition _sceneTransition;
-
-        [SerializeField] private ConnectionProvider _connectionProvider;
 
         [Header("Audio")]
         [SerializeField] private SoundProvider _soundProvider;
-
         [SerializeField] private AudioMixer _audioMixer;
 
         public override void InstallBindings()
@@ -42,8 +43,9 @@ namespace App.Scripts.Features.Bootstrap
             BindLocalizationDataProvider();
             BindLocalizationSystem();
 
+            Container.Bind<AdvertisementProvider>().AsSingle().WithArguments(_advertisementConfig);
+            
             Container.Bind<ISceneTransition>().FromInstance(_sceneTransition);
-            Container.Bind<ConnectionProvider>().FromInstance(_connectionProvider);
 
             Container.Bind<ICommandsProvider>().To<CommandsProvider>().AsSingle();
             Container.Bind<ITimeProvider>().To<TimeProvider>().AsSingle();

@@ -30,7 +30,7 @@ namespace App.Scripts.Features.Merge.Screens
             _infoPanel.OnButtonClick += OnButtonClick;
             _selectionProvider.OnSlotSelected += OnSlotSelected;
             _selectionProvider.OnSelectionCleared += _infoPanel.SetupNoSelected;
-            
+
             _infoPanel.SetupNoSelected();
         }
 

@@ -60,7 +60,7 @@ namespace App.Scripts.Features.Merge.Elements.Slots
                 return;
             }
 
-            if (takenItem.Config.Id.Equals(Item.Config.Id))
+            if (!takenItem.Config.IsLastLevel && takenItem.Config.Id.Equals(Item.Config.Id))
             {
                 Visual.ShowMergeHint();
             }
@@ -97,7 +97,6 @@ namespace App.Scripts.Features.Merge.Elements.Slots
             else
             {
                 Item.Setup(mergeResult);
-                Item.Animator.MergeAnimation().Forget();
                 item.Release();
             }
         }

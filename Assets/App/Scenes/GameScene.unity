@@ -131,6 +131,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 10914149}
+  - component: {fileID: 10914150}
   m_Layer: 5
   m_Name: Diamonds
   m_TagString: Untagged
@@ -159,6 +160,19 @@ RectTransform:
   m_AnchoredPosition: {x: 394.4, y: -40}
   m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &10914150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10914148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd157eb384543d7b1070b25dd327641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _valueText: {fileID: 864680609}
 --- !u!224 &37261260 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2164874937679017172, guid: 8d489b2cd6ee8064b94bf1ccc22a7d55, type: 3}
@@ -1020,7 +1034,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -21.600006, y: 0}
+  m_AnchoredPosition: {x: -21.598923, y: 0.002166748}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &156966007
@@ -1868,8 +1882,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f971abbe26b483eba6ea78b679ae3b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _energyView: {fileID: 1019036654}
   _infoPanel: {fileID: 876459845}
+  _energyView: {fileID: 1019036654}
+  _experienceView: {fileID: 1823746883}
+  _gemsView: {fileID: 10914150}
+  _coinView: {fileID: 1621714669}
 --- !u!4 &297795115
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,7 +1983,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _catalogsDatabase: {fileID: 11400000, guid: 5293dcf544ea4684c91cc0c18d71f277, type: 2}
+  _sellBuyConfig: {fileID: 11400000, guid: d739005dddec2e540baa7346bf9e1bcd, type: 2}
+  _configsFactoryConfig: {fileID: 11400000, guid: cabef07721e59e04d8deafc509b48595, type: 2}
+  _overlayConfig: {fileID: 11400000, guid: e8a4613e49e961a48afaeed9f532de80, type: 2}
+  _coinConfig: {fileID: 11400000, guid: 26639b7647ac07c4ea99e02c6587b663, type: 2}
+  _gemConfig: {fileID: 11400000, guid: e3dfd3213a4e2b041a83819fe9a91d63, type: 2}
   _energyConfig: {fileID: 11400000, guid: d8a8eb742eb44794d92caa540ab30d58, type: 2}
+  _experienceConfig: {fileID: 11400000, guid: 8acae4a03204bd240a16eba7f9a7d0b0, type: 2}
   _slots:
   - {fileID: 667716678}
   - {fileID: 299745938}
@@ -2036,6 +2059,7 @@ MonoBehaviour:
   _hintImage: {fileID: 229431924}
   _itemTemplate: {fileID: 2308509717895022720, guid: 54d7f3f694c9fe84680c8108e22ef9c4, type: 3}
   _itemsContainer: {fileID: 1037783425}
+  _imageTemplate: {fileID: 3362502380207351293, guid: 768ff3573a2c972409b45b24bf6df4d6, type: 3}
 --- !u!4 &336267753
 Transform:
   m_ObjectHideFlags: 0
@@ -4135,7 +4159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -21.600006, y: 0}
+  m_AnchoredPosition: {x: -21.598663, y: 0.002166748}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &720835032
@@ -4512,7 +4536,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -21.600006, y: 0}
+  m_AnchoredPosition: {x: -21.592255, y: 0.002166748}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &756574464
@@ -4775,7 +4799,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: -21.600006, y: 0}
+  m_AnchoredPosition: {x: -21.60315, y: 0.002166748}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &797591811
@@ -5592,7 +5616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.01, y: 0}
+  m_AnchoredPosition: {x: 22.010002, y: 0}
   m_SizeDelta: {x: -44.03, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &864680609
@@ -9074,7 +9098,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 1, b: 0.10980393, a: 1}
+  m_Color: {r: 1, g: 0.82608783, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9855,6 +9879,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1621714668}
+  - component: {fileID: 1621714669}
   m_Layer: 5
   m_Name: Coins
   m_TagString: Untagged
@@ -9883,6 +9908,19 @@ RectTransform:
   m_AnchoredPosition: {x: 111.7, y: -40}
   m_SizeDelta: {x: 225, y: 100}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1621714669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1621714667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dd157eb384543d7b1070b25dd327641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _valueText: {fileID: 2019931815}
 --- !u!1 &1674370784
 GameObject:
   m_ObjectHideFlags: 0
@@ -11167,8 +11205,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823746882}
+  - component: {fileID: 1823746883}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Exp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11195,6 +11234,20 @@ RectTransform:
   m_AnchoredPosition: {x: -477.6, y: -40}
   m_SizeDelta: {x: 245, y: 100}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!114 &1823746883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823746881}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e226f3d5f2d7b4943ad45e96de8d6e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _xpText: {fileID: 1674370786}
+  _fillImage: {fileID: 1397488137}
 --- !u!1001 &1829060664
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12259,7 +12312,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 22.01, y: 0}
+  m_AnchoredPosition: {x: 22.010002, y: 0}
   m_SizeDelta: {x: -44.03, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2019931815

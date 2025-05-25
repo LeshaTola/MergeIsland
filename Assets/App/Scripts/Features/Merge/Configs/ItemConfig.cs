@@ -21,7 +21,7 @@ namespace App.Scripts.Features.Merge.Configs
         [field: SerializeField] [field: PreviewField(Height = 100)]
         public Sprite Sprite { get; private set; }
 
-        [field: SerializeField] public int Cost { get; private set; }
+        // [field: SerializeField] public int Cost { get; private set; }
 
         [field: Header("Systems")]
         [field: SerializeField] public ItemSystem System { get; private set; }
