@@ -1,8 +1,10 @@
-﻿using App.Scripts.Features.GameResources.Energy.Providers;
+﻿using System.Collections.Generic;
+using App.Scripts.Features.GameResources.Energy.Providers;
 using App.Scripts.Features.Merge.Configs;
 using App.Scripts.Features.Merge.Factory;
 using App.Scripts.Features.Merge.Screens;
 using App.Scripts.Modules.PopupAndViews;
+using App.Scripts.Modules.WeightSelector;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 
@@ -10,18 +12,21 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
 {
     public class EmitterItemSystem : ItemSystem
     {
-        [SerializeField] private ItemsCatalogConfig _itemsCatalogConfig;
+        [SerializeField] private List<WeightedItem<ItemConfig>> _items;
 
         private readonly ItemFactory _itemFactory;
+        private readonly WeightedRandomSelector _weightedRandomSelector;
         private readonly ItemConfigsFactory _itemConfigsFactory;
         private readonly EnergyProvider _energyProvider;
         private readonly Grid _grid;
 
-        public EmitterItemSystem(ItemFactory itemFactory,
+        public EmitterItemSystem(WeightedRandomSelector weightedRandomSelector,
+            ItemFactory itemFactory,
             ItemConfigsFactory itemConfigsFactory,
             EnergyProvider energyProvider,
             Grid grid)
         {
+            _weightedRandomSelector = weightedRandomSelector;
             _itemConfigsFactory = itemConfigsFactory;
             _energyProvider = energyProvider;
             _itemFactory = itemFactory;
@@ -48,7 +53,7 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         {
             base.Import(original);
             var system = (EmitterItemSystem) original;
-            _itemsCatalogConfig = system._itemsCatalogConfig;
+            _items = system._items;
         }
 
         private void SpawnItem()
@@ -74,7 +79,7 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
         {
             var item = _itemFactory.GetItem();
 
-            var newConfig = _itemConfigsFactory.GetConfig(_itemsCatalogConfig.ItemsCatalog[0]);
+            var newConfig = _itemConfigsFactory.GetConfig(_weightedRandomSelector.Choose(_items));
             item.Setup(newConfig);
 
             item.transform.position = Item.transform.position;
@@ -86,7 +91,10 @@ namespace App.Scripts.Features.Merge.Elements.Items.Systems
             var data = base.GetSystemData();
             data.Description = ConstStrings.TAP_TO_GET_ITEMS + " " + data.Description;
             data.Sprites.Add(Item.Config.Sprite);
-            data.Sprites.Add(_itemsCatalogConfig.ItemsCatalog[0].Sprite);
+            foreach (var weightedItem in _items)
+            {
+                data.Sprites.Add(weightedItem.Item.Sprite);
+            }
             return data;
         }
     }

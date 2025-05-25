@@ -29,6 +29,7 @@ using App.Scripts.Modules.Saves;
 using App.Scripts.Modules.StateMachine.Services.CleanupService;
 using App.Scripts.Modules.StateMachine.Services.InitializeService;
 using App.Scripts.Modules.StateMachine.Services.UpdateService;
+using App.Scripts.Modules.WeightSelector;
 using Sirenix.OdinInspector;
 using Sirenix.Serialization;
 using UnityEngine;
@@ -80,6 +81,7 @@ namespace App.Scripts.Scenes.Gameplay.Bootstrap
             
             Container.Bind<OverlayItemAnimator>().AsSingle().WithArguments(_overlayConfig);
             
+            Container.Bind<WeightedRandomSelector>().AsSingle();
             Container.Bind<MergeResolver>().AsSingle();
             Container.Bind<SellBuyService>().AsSingle().WithArguments(_sellBuyConfig);
             Container.Bind<SelectionProvider>().AsSingle();

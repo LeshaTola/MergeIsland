@@ -16,7 +16,8 @@ MonoBehaviour:
     SerializedFormat: 2
     SerializedBytes: 
     ReferencedUnityObjects:
-    - {fileID: 11400000, guid: 4dbfd3509c332b84faa313cac3a192fe, type: 2}
+    - {fileID: 11400000, guid: 701b704ff8242b046b78b3535d08141a, type: 2}
+    - {fileID: 11400000, guid: 0938347bc3956af4889553fee2a6da06, type: 2}
     SerializedBytesString: 
     Prefab: {fileID: 0}
     PrefabModificationsReferencedUnityObjects: []
@@ -26,12 +27,48 @@ MonoBehaviour:
       Entry: 7
       Data: 0|App.Scripts.Features.Merge.Elements.Items.Systems.EmitterItemSystem,
         Features
-    - Name: Action
+    - Name: <Action>k__BackingField
       Entry: 6
       Data: 
-    - Name: _itemsCatalogConfig
+    - Name: _items
+      Entry: 7
+      Data: 1|System.Collections.Generic.List`1[[App.Scripts.Modules.WeightSelector.WeightedItem`1[[App.Scripts.Features.Merge.Configs.ItemConfig,
+        Features]], Modules]], mscorlib
+    - Name: 
+      Entry: 12
+      Data: 2
+    - Name: 
+      Entry: 7
+      Data: 2|App.Scripts.Modules.WeightSelector.WeightedItem`1[[App.Scripts.Features.Merge.Configs.ItemConfig,
+        Features]], Modules
+    - Name: Item
       Entry: 10
       Data: 0
+    - Name: Weight
+      Entry: 4
+      Data: 5
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 7
+      Data: 3|App.Scripts.Modules.WeightSelector.WeightedItem`1[[App.Scripts.Features.Merge.Configs.ItemConfig,
+        Features]], Modules
+    - Name: Item
+      Entry: 10
+      Data: 1
+    - Name: Weight
+      Entry: 4
+      Data: 1
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
+      Data: 
     - Name: 
       Entry: 8
       Data: 
@@ -40,4 +77,3 @@ MonoBehaviour:
   <IsLastLevel>k__BackingField: 1
   <Name>k__BackingField: Rubbish
   <Sprite>k__BackingField: {fileID: -1299661578, guid: 6b1e1e1c551bad3428f825ba992a1e01, type: 3}
-  <Cost>k__BackingField: 0
